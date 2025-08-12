@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { ArrowRight, Plane } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 import { GradientButton } from "@/components/ui/gradient-button" // Import new gradient button
 
 function BrandLogo({ logo, name }: { logo: string; name: string }) {
@@ -19,7 +19,6 @@ function BrandLogo({ logo, name }: { logo: string; name: string }) {
 export function Hero() {
   const titleRef = useRef<HTMLHeadingElement>(null)
   const subtitleRef = useRef<HTMLParagraphElement>(null)
-  const ctaRef = useRef<HTMLDivElement>(null)
 
   const trustedBrands = [
     { name: "SHOPIFY", logo: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/shopify.svg" },
@@ -29,7 +28,7 @@ export function Hero() {
   ]
 
   useEffect(() => {
-    const elements = [titleRef.current, subtitleRef.current, ctaRef.current]
+    const elements = [titleRef.current, subtitleRef.current]
 
     elements.forEach((el, index) => {
       if (el) {
@@ -52,12 +51,6 @@ export function Hero() {
       <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-[#CB8D0F]/5 to-transparent blur-3xl"></div>
 
       <div className="max-w-4xl relative z-10">
-        <div ref={ctaRef} className="mb-16">
-          <div className="inline-flex items-center justify-center w-12 h-12 bg-[#CB8D0F]/10 rounded-lg">
-            <Plane className="h-5 w-5 text-[#CB8D0F] rotate-45" />
-          </div>
-        </div>
-
         <h1
           ref={titleRef}
           className="text-5xl lg:text-7xl font-bold text-[#F7F7F7] leading-tight mb-8 font-satoshi uppercase tracking-tight"
@@ -84,17 +77,6 @@ export function Hero() {
           <GradientButton variant="secondary" size="lg" className="px-8 py-3 text-base bg-transparent">
             VIEW WORK
           </GradientButton>
-        </div>
-
-        <div className="pt-8 border-t border-[#F7F7F7]/10">
-          <p className="text-xs text-[#F7F7F7]/40 mb-4 font-satoshi uppercase tracking-wider">
-            TRUSTED BY 100+ GROWING BRANDS
-          </p>
-          <div className="flex items-center space-x-8">
-            {trustedBrands.map((brand, index) => (
-              <BrandLogo key={index} logo={brand.logo} name={brand.name} />
-            ))}
-          </div>
         </div>
       </div>
     </section>
