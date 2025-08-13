@@ -1,0 +1,14 @@
+{
+  "servers": [
+    {
+      "name": "Default GitHub Copilot",
+      "url": "https://api.githubcopilot.com",
+      "description": "Servidor padrão do GitHub Copilot"
+    },
+    {
+      "name": "Local MCP Server",
+      "url": "localhost:50051",
+      "description": "Servidor MCP local para desenvolvimento"
+    }
+  ]
+}

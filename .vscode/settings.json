@@ -1,0 +1,9 @@
+{
+  "github.copilot.enable": {
+    "*": true
+  },
+  "github.copilot.chat.localeOverride": "pt-br",
+  "github.copilot.advanced": {
+    "mcp.serverAddress": "localhost:50051"
+  }
+}
