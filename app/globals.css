@@ -224,8 +224,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    /* Adicionando padding-top para navbar fixa */
-    padding-top: 80px;
+    /* Removido padding-top global para evitar espaço extra no topo do Hero */
   }
 }
 

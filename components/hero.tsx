@@ -1,8 +1,14 @@
-"use client"
 
-import { useEffect, useRef } from "react"
+
+"use client"
+import * as React from "react";
+
+import { useRef } from "react"
 import { ArrowRight } from "lucide-react"
-import { GradientButton } from "@/components/ui/gradient-button" // Import new gradient button
+import { GradientButton } from "@/components/ui/gradient-button"
+import DarkVeil from "@/components/blocks/Backgrounds/DarkVeil/DarkVeil"
+import { useT } from "@/lib/i18n"
+
 
 function BrandLogo({ logo, name }: { logo: string; name: string }) {
   return (
@@ -16,69 +22,86 @@ function BrandLogo({ logo, name }: { logo: string; name: string }) {
   )
 }
 
-export function Hero() {
-  const titleRef = useRef<HTMLHeadingElement>(null)
-  const subtitleRef = useRef<HTMLParagraphElement>(null)
+// Componente para animar entrada
+import type { ReactNode, ElementType, HTMLAttributes } from "react";
+type AnimatedFadeInProps<T extends ElementType> = {
+  as?: T;
+  delay?: number;
+  children: ReactNode;
+  className?: string;
+} & Omit<HTMLAttributes<HTMLElement>, 'as' | 'children' | 'className'>;
 
+function AnimatedFadeIn<T extends ElementType = 'div'>({
+  as,
+  delay = 0,
+  children,
+  className = "",
+  ...rest
+}: AnimatedFadeInProps<T>) {
+  const Tag = (as || 'div') as ElementType;
+  const ref = useRef<HTMLElement>(null);
+  React.useLayoutEffect(() => {
+    const el = ref.current;
+    if (el) {
+      el.style.opacity = "0";
+      el.style.transform = "translateY(30px)";
+      setTimeout(() => {
+        el.style.transition = "all 0.8s cubic-bezier(.4,0,.2,1)";
+        el.style.opacity = "1";
+        el.style.transform = "translateY(0)";
+      }, delay);
+    }
+  }, [delay]);
+  return (
+    <Tag ref={ref} className={className} {...rest}>
+      {children}
+    </Tag>
+  );
+}
+
+export function Hero() {
+  const t = useT();
   const trustedBrands = [
     { name: "SHOPIFY", logo: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/shopify.svg" },
     { name: "WORDPRESS", logo: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/wordpress.svg" },
     { name: "META", logo: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/meta.svg" },
     { name: "GOOGLE", logo: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/google.svg" },
-  ]
-
-  useEffect(() => {
-    const elements = [titleRef.current, subtitleRef.current]
-
-    elements.forEach((el, index) => {
-      if (el) {
-        el.style.opacity = "0"
-        el.style.transform = "translateY(30px)"
-
-        setTimeout(() => {
-          el.style.transition = "all 0.8s ease-out"
-          el.style.opacity = "1"
-          el.style.transform = "translateY(0)"
-        }, index * 200)
-      }
-    })
-  }, [])
+  ];
 
   return (
-    <section className="px-6 py-32 lg:px-12 lg:py-40 max-w-7xl mx-auto relative min-h-screen flex items-center">
-      <div className="absolute inset-0 bg-[#0F0E0D]"></div>
+  <section className="relative min-h-screen flex items-center justify-center overflow-hidden w-full">
+      {/* DarkVeil background */}
+  <div className="absolute inset-0 bottom-32 z-10 w-full h-full pointer-events-none">
+        <DarkVeil 
+          speed={3}
+          hueShift={208}
+          noiseIntensity={0}
+          scanlineFrequency={0.5}
+          scanlineIntensity={0}
+          warpAmount={1.4}
+        />
+      </div>
 
-      <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-gradient-to-br from-[#CB8D0F]/5 to-transparent blur-3xl"></div>
+  <div className="max-w-4xl w-full flex flex-col items-center justify-center text-center z-10 px-6 py-32 lg:px-32 lg:py-40">
+  <AnimatedFadeIn as="h1" delay={0} className="text-5xl lg:text-7xl font-bold text-[#F7F7F7] leading-tight mb-8 font-satoshi uppercase tracking-tight text-center">
+          {t("hero.title.line1")}<br />
+          <span className="text-[#CB8D0F]">{t("hero.title.line2")}</span><br />
+          <span className="text-[#F7F7F7]">{t("hero.title.line3")}</span>
+        </AnimatedFadeIn>
 
-      <div className="max-w-4xl relative z-10">
-        <h1
-          ref={titleRef}
-          className="text-5xl lg:text-7xl font-bold text-[#F7F7F7] leading-tight mb-8 font-satoshi uppercase tracking-tight"
-        >
-          YOUR BRAND
-          <br />
-          <span className="text-[#CB8D0F]">DESERVES TO</span>
-          <br />
-          <span className="text-[#F7F7F7]">FLY HIGH</span>
-        </h1>
+  <AnimatedFadeIn as="p" delay={200} className="text-lg lg:text-xl text-[#F7F7F7]/60 leading-relaxed max-w-2xl mb-12 font-satoshi text-center">
+          {t("hero.subtitle")}
+        </AnimatedFadeIn>
 
-        <p
-          ref={subtitleRef}
-          className="text-lg lg:text-xl text-[#F7F7F7]/60 leading-relaxed max-w-2xl mb-12 font-satoshi"
-        >
-          We elevate ambitious brands beyond the horizon, crafting digital experiences that soar above the competition.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-4 mb-20">
-          <GradientButton size="lg" className="px-8 py-3 text-base transition-all duration-200">
-            TALK TO DIEGO <ArrowRight className="ml-2 h-4 w-4" />
-          </GradientButton>
-
-          <GradientButton variant="secondary" size="lg" className="px-8 py-3 text-base bg-transparent">
-            VIEW WORK
-          </GradientButton>
-        </div>
+  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+    <GradientButton size="md">
+  {t("hero.buttons.talkToDiego").toUpperCase()} <ArrowRight className="ml-2 h-4 w-4" />
+    </GradientButton>
+    <GradientButton variant="secondary" size="md">
+  {t("hero.buttons.viewWork").toUpperCase()}
+    </GradientButton>
+  </div>
       </div>
     </section>
-  )
+  );
 }

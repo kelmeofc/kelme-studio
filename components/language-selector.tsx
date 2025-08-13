@@ -1,50 +1,59 @@
-"use client"
-
-import { useState } from "react"
-import { ChevronDown } from "lucide-react"
+"use client";
+import { useState, useEffect } from "react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { GradientButton } from "@/components/ui/gradient-button";
+import ReactCountryFlag from "react-country-flag";
+import { ChevronDown } from "lucide-react";
+import { useI18n } from "@/lib/i18n";
+import { usePathname, useRouter } from 'next/navigation';
 
 const languages = [
-  { code: "en", name: "English", flag: "🇺🇸" },
-  { code: "pt", name: "Português", flag: "🇧🇷" },
-]
+  { code: "PT", label: "Português", country: "BR" },
+  { code: "EN", label: "English", country: "US" },
+];
 
 export function LanguageSelector() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [currentLang, setCurrentLang] = useState(languages[0])
+  const { locale, setLocale } = useI18n();
+  const router = useRouter();
+  const pathname = usePathname();
+  const [selected, setSelected] = useState(locale.toUpperCase());
+  useEffect(() => setSelected(locale.toUpperCase()), [locale]);
+  const current = languages.find((l) => l.code === selected) || languages[0];
 
   return (
-    <div className="relative">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 bg-[#F7F7F7]/5 backdrop-blur-sm border border-[#F7F7F7]/10 rounded-lg hover:bg-[#F7F7F7]/10 transition-all duration-300"
-      >
-        <span className="text-lg">{currentLang.flag}</span>
-        <span className="text-sm font-medium text-[#F7F7F7] uppercase tracking-wide">{currentLang.code}</span>
-        <ChevronDown
-          className={`w-4 h-4 text-[#F7F7F7]/60 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
-        />
-      </button>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <GradientButton variant="secondary" size="sm" className="flex items-center gap-2 min-w-[120px] px-4 py-2">
+          <ReactCountryFlag countryCode={current.country} svg style={{ width: 20, height: 20, borderRadius: '50%', objectFit: 'cover' }} />
+          <span className="font-bold text-base text-[#F7F7F7]">{current.code}</span>
+          <ChevronDown className="h-4 w-4 text-[#CB8D0F]" />
+        </GradientButton>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="min-w-[140px] p-1">
+        {languages.map((lang) => (
+          <DropdownMenuItem
+            key={lang.code}
+            onClick={() => {
+              const newLocale = lang.code.toLowerCase();
+              setSelected(lang.code);
+              setLocale(newLocale as any);
+              // Reescrever pathname substituindo primeiro segmento de locale
+              const segments = pathname.split('/').filter(Boolean);
+              if (segments.length > 0 && ['en','pt'].includes(segments[0])) {
+                segments[0] = newLocale;
+              } else {
+                segments.unshift(newLocale);
+              }
+              router.push('/' + segments.join('/'));
+            }}
+            className="flex items-center gap-2 px-3 py-2 rounded-lg font-satoshi text-base hover:bg-[#CB8D0F]/10 focus:bg-[#CB8D0F]/10"
+          >
+            <ReactCountryFlag countryCode={lang.country} svg style={{ width: 20, height: 20, borderRadius: '50%', objectFit: 'cover' }} />
+            <span>{lang.label}</span>
+          </DropdownMenuItem>
+        ))}
+      </DropdownMenuContent>
+    </DropdownMenu>
 
-      {isOpen && (
-        <div className="absolute bottom-full mb-2 right-0 bg-[#0F0E0D]/95 backdrop-blur-xl border border-[#F7F7F7]/10 rounded-lg overflow-hidden shadow-2xl">
-          {languages.map((lang) => (
-            <button
-              key={lang.code}
-              onClick={() => {
-                setCurrentLang(lang)
-                setIsOpen(false)
-              }}
-              className="flex items-center gap-3 w-full px-4 py-3 text-left hover:bg-[#CB8D0F]/10 transition-colors duration-200"
-            >
-              <span className="text-lg">{lang.flag}</span>
-              <div>
-                <div className="text-sm font-medium text-[#F7F7F7] uppercase tracking-wide">{lang.code}</div>
-                <div className="text-xs text-[#F7F7F7]/60">{lang.name}</div>
-              </div>
-            </button>
-          ))}
-        </div>
-      )}
-    </div>
-  )
+  );
 }

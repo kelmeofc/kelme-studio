@@ -3,44 +3,33 @@
 import { Instagram, Linkedin, Twitter, Youtube } from "lucide-react"
 import Image from "next/image"
 import { LanguageSelector } from "./language-selector"
-import { GradientButton } from "@/components/ui/gradient-button" // Import new gradient button
+import { GradientButton } from "@/components/ui/gradient-button"
+import { useI18n } from "@/lib/i18n"
 
-const footerSections = {
-  explore: [
-    { name: "Home", href: "#" },
-    { name: "Services", href: "#services" },
-    { name: "Work", href: "#work" },
-    { name: "About", href: "#about" },
-  ],
-  services: [
-    { name: "Development", href: "#" },
-    { name: "Marketing", href: "#" },
-    { name: "Strategy", href: "#" },
-    { name: "Video Editing", href: "#" },
-  ],
-  social: [
-    { name: "LinkedIn", icon: <Linkedin className="w-4 h-4" />, href: "#" },
-    { name: "Instagram", icon: <Instagram className="w-4 h-4" />, href: "#" },
-    { name: "Twitter", icon: <Twitter className="w-4 h-4" />, href: "#" },
-    { name: "YouTube", icon: <Youtube className="w-4 h-4" />, href: "#" },
-  ],
+const socialIconMap: Record<string, React.ReactElement> = {
+  LinkedIn: <Linkedin className="w-4 h-4" />,
+  Instagram: <Instagram className="w-4 h-4" />,
+  Twitter: <Twitter className="w-4 h-4" />,
+  YouTube: <Youtube className="w-4 h-4" />,
+  // PT labels keep same icons
+  LinkedInPT: <Linkedin className="w-4 h-4" />,
 }
 
 export function Footer() {
+  const { dictionary } = useI18n()
+  const f = dictionary.footer
   return (
     <footer className="bg-[#0F0E0D]">
       {/* CTA Section */}
       <div className="py-32 text-center">
         <div className="max-w-4xl mx-auto px-6">
           <h2 className="text-5xl md:text-7xl font-bold text-[#F7F7F7] mb-8 leading-tight">
-            Ready to make your brand{" "}
-            <span className="bg-gradient-to-r from-[#CB8D0F] to-[#E6A635] bg-clip-text text-transparent">fly high</span>
-            ?
+            {f.cta.title.part1}{" "}
+            <span className="bg-gradient-to-r from-[#CB8D0F] to-[#E6A635] bg-clip-text text-transparent">{f.cta.title.highlight}</span>
+            {f.cta.title.part2}
           </h2>
-          <p className="text-xl text-[#F7F7F7]/60 mb-12 max-w-2xl mx-auto">
-            Let's discuss your project and elevate your digital presence to new heights.
-          </p>
-          <GradientButton className="px-12 py-4 tracking-wider hover:scale-105">TALK TO DIEGO</GradientButton>
+          <p className="text-xl text-[#F7F7F7]/60 mb-12 max-w-2xl mx-auto">{f.cta.subtitle}</p>
+          <GradientButton className="px-12 py-4 tracking-wider hover:scale-105">{f.cta.button.toUpperCase()}</GradientButton>
         </div>
       </div>
 
@@ -54,22 +43,17 @@ export function Footer() {
                 <Image src="/kelme-icon.svg" alt="Kelme Studio" width={28} height={28} />
                 <LanguageSelector />
               </div>
-              <p className="text-[#F7F7F7]/50 text-sm leading-relaxed">
-                Elevating brands through strategic digital solutions and creative excellence.
-              </p>
+              <p className="text-[#F7F7F7]/50 text-sm leading-relaxed">{f.brandDescription}</p>
             </div>
 
             {/* Explore Column */}
             <div>
-              <h3 className="text-[#CB8D0F] font-semibold mb-8 uppercase tracking-wide text-sm">Explore</h3>
+              <h3 className="text-[#CB8D0F] font-semibold mb-8 uppercase tracking-wide text-sm">{f.exploreTitle}</h3>
               <ul className="space-y-5">
-                {footerSections.explore.map((link) => (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="text-[#F7F7F7]/60 hover:text-[#F7F7F7] transition-colors duration-300"
-                    >
-                      {link.name}
+                {f.exploreLinks.map((name: string, i: number) => (
+                  <li key={i}>
+                    <a href="#" className="text-[#F7F7F7]/60 hover:text-[#F7F7F7] transition-colors duration-300">
+                      {name}
                     </a>
                   </li>
                 ))}
@@ -78,15 +62,12 @@ export function Footer() {
 
             {/* Services Column */}
             <div>
-              <h3 className="text-[#CB8D0F] font-semibold mb-8 uppercase tracking-wide text-sm">Services</h3>
+              <h3 className="text-[#CB8D0F] font-semibold mb-8 uppercase tracking-wide text-sm">{f.servicesTitle}</h3>
               <ul className="space-y-5">
-                {footerSections.services.map((link) => (
-                  <li key={link.name}>
-                    <a
-                      href={link.href}
-                      className="text-[#F7F7F7]/60 hover:text-[#F7F7F7] transition-colors duration-300"
-                    >
-                      {link.name}
+                {f.serviceLinks.map((name: string, i: number) => (
+                  <li key={i}>
+                    <a href="#" className="text-[#F7F7F7]/60 hover:text-[#F7F7F7] transition-colors duration-300">
+                      {name}
                     </a>
                   </li>
                 ))}
@@ -95,16 +76,16 @@ export function Footer() {
 
             {/* Social Column */}
             <div>
-              <h3 className="text-[#CB8D0F] font-semibold mb-8 uppercase tracking-wide text-sm">Social</h3>
+              <h3 className="text-[#CB8D0F] font-semibold mb-8 uppercase tracking-wide text-sm">{f.socialTitle}</h3>
               <ul className="space-y-5">
-                {footerSections.social.map((social) => (
-                  <li key={social.name}>
+                {f.socialLinks.map((name: string, i: number) => (
+                  <li key={i}>
                     <a
-                      href={social.href}
+                      href="#"
                       className="flex items-center gap-3 text-[#F7F7F7]/60 hover:text-[#F7F7F7] transition-colors duration-300"
                     >
-                      {social.icon}
-                      {social.name}
+                      {socialIconMap[name] || <Linkedin className="w-4 h-4" />}
+                      {name}
                     </a>
                   </li>
                 ))}
@@ -117,7 +98,7 @@ export function Footer() {
       {/* Copyright */}
       <div className="border-t border-[#F7F7F7]/5 py-8">
         <div className="max-w-7xl mx-auto px-6">
-          <p className="text-[#F7F7F7]/40 text-sm text-center">© 2024 KELME STUDIO. All Rights Reserved</p>
+          <p className="text-[#F7F7F7]/40 text-sm text-center">{f.copyright}</p>
         </div>
       </div>
     </footer>

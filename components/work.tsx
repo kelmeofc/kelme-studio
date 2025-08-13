@@ -1,62 +1,14 @@
 "use client"
 
 import { useState } from "react"
+import { useI18n } from "@/lib/i18n"
 import { ExternalLink } from "lucide-react"
 import Image from "next/image"
 import { GradientButton } from "@/components/ui/gradient-button" // Import new gradient button
 
-const portfolioItems = [
-  {
-    id: 1,
-    title: "FINTECH REVOLUTION",
-    category: "MICRO-SAAS",
-    description: "Complete financial platform with AI-powered insights and automated trading capabilities.",
-    image: "/placeholder-opudz.png",
-    year: "2024",
-  },
-  {
-    id: 2,
-    title: "LUXURY ECOMMERCE",
-    category: "SHOPIFY",
-    description: "Premium fashion brand with immersive shopping experience and AR try-on features.",
-    image: "/luxury-fashion-ecommerce.png",
-    year: "2024",
-  },
-  {
-    id: 3,
-    title: "STARTUP LANDING",
-    category: "LANDING PAGE",
-    description: "High-converting landing page that increased conversions by 340% in 30 days.",
-    image: "/modern-startup-hero.png",
-    year: "2023",
-  },
-  {
-    id: 4,
-    title: "TECH BRAND IDENTITY",
-    category: "BRANDING",
-    description: "Complete brand overhaul for emerging tech company, from logo to digital presence.",
-    image: "/placeholder-c7jvm.png",
-    year: "2023",
-  },
-  {
-    id: 5,
-    title: "VIRAL CAMPAIGN",
-    category: "MARKETING",
-    description: "Social media campaign that reached 2M+ users and generated 150% ROI.",
-    image: "/placeholder-zbxuv.png",
-    year: "2024",
-  },
-  {
-    id: 6,
-    title: "ENTERPRISE SOLUTION",
-    category: "DEVELOPMENT",
-    description: "Custom CRM system handling 10K+ daily transactions with real-time analytics.",
-    image: "/enterprise-crm-dashboard.png",
-    year: "2023",
-  },
-]
-
 export function Work() {
+  const { dictionary } = useI18n()
+  const portfolioItems: any[] = dictionary.work.items
   const [hoveredItem, setHoveredItem] = useState<number | null>(null)
 
   return (
@@ -64,12 +16,9 @@ export function Work() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-20">
           <h2 className="text-4xl lg:text-6xl font-bold text-[#F7F7F7] mb-6 font-satoshi uppercase tracking-tight">
-            Our Portfolio
+            {dictionary.work.sectionTitle}
           </h2>
-          <p className="text-lg text-[#F7F7F7]/60 max-w-2xl font-satoshi">
-            The foundation of our portfolio demonstrates who we truly are. We invest into exceptional people and follow
-            the long-term vision.
-          </p>
+          <p className="text-lg text-[#F7F7F7]/60 max-w-2xl font-satoshi">{dictionary.work.sectionSubtitle}</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-1">
@@ -118,7 +67,7 @@ export function Work() {
 
         <div className="text-center mt-20">
           <GradientButton className="inline-flex items-center gap-2 px-6 py-3 transition-colors">
-            VIEW PORTFOLIO
+            {dictionary.work.viewButton.toUpperCase()}
           </GradientButton>
         </div>
       </div>

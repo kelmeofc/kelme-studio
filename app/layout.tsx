@@ -3,6 +3,8 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import Script from "next/script"
+import { I18nProvider } from "@/lib/i18n"
+import { redirect } from 'next/navigation'
 
 const satoshi = Inter({
   subsets: ["latin"],
@@ -18,17 +20,20 @@ export const metadata: Metadata = {
     generator: 'v0.app'
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // Redirect raiz para default locale
+  if (typeof window === 'undefined') {
+    // Em SSR podemos renderizar html mínimo enquanto redirect ocorre via middleware futura
+  }
   return (
     <html lang="en" className={`${satoshi.variable} antialiased dark`}>
       <head>
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" strategy="beforeInteractive" />
+        <meta httpEquiv="refresh" content="0; url=/en" />
       </head>
-      <body className="font-satoshi bg-[#0F0E0D] text-[#F7F7F7]">{children}</body>
+      <body className="font-satoshi bg-[#0F0E0D] text-[#F7F7F7]">
+        <I18nProvider initialLocale="en">{children}</I18nProvider>
+      </body>
     </html>
   )
 }

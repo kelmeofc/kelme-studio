@@ -1,56 +1,39 @@
 "use client"
 
-import { useState } from "react"
+import React, { useState } from "react"
 import { Code, Megaphone, Palette, Video } from "lucide-react"
+import { useI18n } from "@/lib/i18n"
 
-const services = [
-  {
-    number: "01",
-    category: "DEVELOPMENT",
-    icon: <Code className="w-5 h-5" />,
-    description: "Custom solutions that scale with your business growth and vision.",
-    items: ["WordPress", "Shopify", "Landing Pages", "Micro-SaaS", "MVP"],
-  },
-  {
-    number: "02",
-    category: "MARKETING",
-    icon: <Megaphone className="w-5 h-5" />,
-    description: "Strategic campaigns that drive engagement and measurable results.",
-    items: ["Meta ADS", "Google ADS", "TikTok ADS", "Social Media", "Email Marketing", "SEO"],
-  },
-  {
-    number: "03",
-    category: "STRATEGY",
-    icon: <Palette className="w-5 h-5" />,
-    description: "Brand positioning and user experience that resonates with your audience.",
-    items: ["Branding", "UI/UX Research"],
-  },
-  {
-    number: "04",
-    category: "VIDEO EDITING",
-    icon: <Video className="w-5 h-5" />,
-    description: "Compelling video content that converts viewers into customers.",
-    items: ["VSL", "Creative Content for ADS"],
-  },
-]
+// Mapeia ícones por possíveis categorias (EN/PT)
+const iconMap: Record<string, React.ReactElement> = {
+  Development: <Code className="w-5 h-5" />,
+  Marketing: <Megaphone className="w-5 h-5" />,
+  Strategy: <Palette className="w-5 h-5" />,
+  "Video Editing": <Video className="w-5 h-5" />,
+  Desenvolvimento: <Code className="w-5 h-5" />,
+  "Edição de Vídeo": <Video className="w-5 h-5" />,
+  Estratégia: <Palette className="w-5 h-5" />,
+}
 
 export function Services() {
   const [activeService, setActiveService] = useState(0)
+  const { dictionary } = useI18n()
+  const services: { number: string; category: string; description: string; items: string[] }[] = dictionary.services.list
 
   return (
     <section className="py-32 px-6 lg:px-12 bg-[#F7F7F7]">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20">
           <h2 className="text-4xl lg:text-6xl font-bold text-[#0F0E0D] mb-6 font-satoshi uppercase tracking-tight">
-            Services
+            {dictionary.services.sectionTitle}
           </h2>
           <p className="text-lg text-[#0F0E0D]/60 max-w-2xl font-satoshi">
-            We partner with founders in the early stages - and back them until the world sees what we see.
+            {dictionary.services.sectionSubtitle}
           </p>
         </div>
 
         <div className="space-y-1">
-          {services.map((service, index) => (
+          {services.map((service, index: number) => (
             <div
               key={service.category}
               className={`group cursor-pointer transition-all duration-300 ${
@@ -68,15 +51,13 @@ export function Services() {
                     {service.number}
                   </span>
                   <div className="flex items-center gap-4">
-                    <div className={`${activeService === index ? "text-[#CB8D0F]" : "text-[#0F0E0D]/60"}`}>
-                      {service.icon}
-                    </div>
+                    <div className={`${activeService === index ? "text-[#CB8D0F]" : "text-[#0F0E0D]/60"}`}> {iconMap[service.category] || <Code className="w-5 h-5" />} </div>
                     <h3
                       className={`text-xl font-semibold font-satoshi uppercase tracking-wide ${
                         activeService === index ? "text-[#F7F7F7]" : "text-[#0F0E0D]"
                       }`}
                     >
-                      {service.category}
+                      {service.category.toUpperCase()}
                     </h3>
                   </div>
                 </div>
