@@ -7,7 +7,7 @@ import { useRef } from "react"
 import { ArrowRight } from "lucide-react"
 import { GradientButton } from "@/components/ui/gradient-button"
 import DarkVeil from "@/components/blocks/Backgrounds/DarkVeil/DarkVeil"
-import { useT } from "@/lib/i18n"
+import { useTranslations } from 'next-intl'
 
 
 function BrandLogo({ logo, name }: { logo: string; name: string }) {
@@ -60,7 +60,7 @@ function AnimatedFadeIn<T extends ElementType = 'div'>({
 }
 
 export function Hero() {
-  const t = useT();
+  const t = useTranslations();
   const trustedBrands = [
     { name: "SHOPIFY", logo: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/shopify.svg" },
     { name: "WORDPRESS", logo: "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/wordpress.svg" },
@@ -94,10 +94,10 @@ export function Hero() {
         </AnimatedFadeIn>
 
   <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-    <GradientButton size="md">
+  <GradientButton size="default">
   {t("hero.buttons.talkToDiego").toUpperCase()} <ArrowRight className="ml-2 h-4 w-4" />
     </GradientButton>
-    <GradientButton variant="secondary" size="md">
+  <GradientButton variant="secondary" size="default">
   {t("hero.buttons.viewWork").toUpperCase()}
     </GradientButton>
   </div>

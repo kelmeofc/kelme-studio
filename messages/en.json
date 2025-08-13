@@ -1,0 +1,139 @@
+{
+  "navbar": {
+    "services": "Services",
+    "work": "Work",
+    "about": "About",
+    "insights": "Insights",
+    "letsTalk": "Let's Talk",
+    "menus": {
+      "development": {
+        "title": "Development",
+        "items": ["WordPress", "Shopify", "Landing Pages", "Micro-SaaS", "MVP"]
+      },
+      "marketing": {
+        "title": "Marketing",
+        "items": ["Meta Ads", "Google Ads", "TikTok Ads", "Social Media", "Email Marketing", "SEO"]
+      },
+      "strategy": {
+        "title": "Strategy",
+        "items": ["Branding", "UI/UX Research"]
+      },
+      "video": {
+        "title": "Video",
+        "items": ["VSL", "Creative Ads"]
+      },
+      "work": ["Recent Projects", "Case Studies", "Success Stories"],
+      "insights": ["Latest Posts", "Marketing Tips", "Dev Insights", "Tools"]
+    }
+  },
+  "hero": {
+    "title": {"line1": "YOUR BRAND", "line2": "DESERVES TO", "line3": "FLY HIGH"},
+    "subtitle": "We elevate ambitious brands beyond the horizon, crafting digital experiences that soar above the competition.",
+    "buttons": {"talkToDiego": "Talk to Diego", "viewWork": "View Work"}
+  },
+  "services": {
+    "sectionTitle": "Services",
+    "sectionSubtitle": "We partner with founders in the early stages - and back them until the world sees what we see.",
+    "list": [
+      {
+        "number": "01",
+        "category": "Development",
+        "description": "Custom solutions that scale with your business growth and vision.",
+        "items": ["WordPress", "Shopify", "Landing Pages", "Micro-SaaS", "MVP"]
+      },
+      {
+        "number": "02",
+        "category": "Marketing",
+        "description": "Strategic campaigns that drive engagement and measurable results.",
+        "items": ["Meta Ads", "Google Ads", "TikTok Ads", "Social Media", "Email Marketing", "SEO"]
+      },
+      {
+        "number": "03",
+        "category": "Strategy",
+        "description": "Brand positioning and user experience that resonates with your audience.",
+        "items": ["Branding", "UI/UX Research"]
+      },
+      {
+        "number": "04",
+        "category": "Video Editing",
+        "description": "Compelling video content that converts viewers into customers.",
+        "items": ["VSL", "Creative Content for Ads"]
+      }
+    ]
+  },
+  "work": {
+    "sectionTitle": "Our Portfolio",
+    "sectionSubtitle": "The foundation of our portfolio demonstrates who we truly are. We invest into exceptional people and follow the long-term vision.",
+    "viewButton": "View Portfolio",
+    "items": [
+      {"id": 1, "title": "Fintech Revolution", "category": "MICRO-SAAS", "description": "Complete financial platform with AI-powered insights and automated trading capabilities.", "image": "/placeholder-opudz.png", "year": "2024"},
+      {"id": 2, "title": "Luxury Ecommerce", "category": "SHOPIFY", "description": "Premium fashion brand with immersive shopping experience and AR try-on features.", "image": "/luxury-fashion-ecommerce.png", "year": "2024"},
+      {"id": 3, "title": "Startup Landing", "category": "LANDING PAGE", "description": "High-converting landing page that increased conversions by 340% in 30 days.", "image": "/modern-startup-hero.png", "year": "2023"},
+      {"id": 4, "title": "Tech Brand Identity", "category": "BRANDING", "description": "Complete brand overhaul for emerging tech company, from logo to digital presence.", "image": "/placeholder-c7jvm.png", "year": "2023"},
+      {"id": 5, "title": "Viral Campaign", "category": "MARKETING", "description": "Social media campaign that reached 2M+ users and generated 150% ROI.", "image": "/placeholder-zbxuv.png", "year": "2024"},
+      {"id": 6, "title": "Enterprise Solution", "category": "DEVELOPMENT", "description": "Custom CRM system handling 10K+ daily transactions with real-time analytics.", "image": "/enterprise-crm-dashboard.png", "year": "2023"}
+    ]
+  },
+  "founder": {
+    "firstName": "Diego",
+    "lastName": "Kelme",
+    "role": "Founder & Creative Director",
+    "quote": "Every brand deserves to fly high. I help businesses unlock their potential and reach new heights through strategic digital experiences.",
+    "bio": "8+ years transforming digital landscapes. From startups to enterprises, combining creativity with data-driven strategy to deliver exceptional results.",
+    "stats": {
+      "projects": {"value": "50+", "label": "Projects"},
+      "clients": {"value": "30+", "label": "Clients"},
+      "growth": {"value": "340%", "label": "Avg Growth"}
+    }
+  },
+  "socialProof": {
+    "testimonials": {
+      "titleLine1": "Client",
+      "titleLine2": "Testimonials",
+      "subtitle": "Don't just take our word for it. Here's what our clients say about working with Kelme Studio.",
+      "list": [
+        {"name": "Sarah Martinez", "role": "CEO, TechFlow Solutions", "content": "Diego and his team transformed our entire digital presence. Our conversion rates increased by 280% in just 3 months. The attention to detail and strategic thinking is unmatched.", "rating": 5, "image": "/sarah-martinez-testimonial.png"},
+        {"name": "Michael Chen", "role": "Founder, EcoVenture", "content": "Working with Kelme Studio was a game-changer. They didn't just build us a website - they crafted a complete brand experience that resonates with our audience.", "rating": 5, "image": "/michael-chen-testimonial.png"},
+        {"name": "Alexandra Torres", "role": "Marketing Director, FinanceHub", "content": "The ROI we've seen from our campaigns is incredible. Diego's strategic approach to digital marketing has elevated our brand beyond our expectations.", "rating": 5, "image": "/alexandra-torres-testimonial.png"}
+      ]
+    },
+    "awards": {
+      "titleLine1": "You Deserve",
+      "titleLine2": "The Best",
+      "subtitle": "Recognition from industry leaders validates our commitment to excellence.",
+      "list": [
+        {"title": "Best Digital Agency", "year": "2024", "organization": "Marketing Excellence Awards", "iconKey": "trophy"},
+        {"title": "Innovation In Design", "year": "2023", "organization": "Web Design Awards", "iconKey": "star"},
+        {"title": "Client Satisfaction", "year": "2023", "organization": "Agency Awards", "iconKey": "users"}
+      ]
+    },
+    "partners": {
+      "titleLine1": "Who We've",
+      "titleLine2": "Partnered With",
+      "subtitle": "Trusted by industry giants and innovative startups alike.",
+      "list": [
+        {"name": "Microsoft", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/microsoft.svg", "color": "#5E5E5E"},
+        {"name": "Google", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/google.svg", "color": "#4285F4"},
+        {"name": "NVIDIA", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/nvidia.svg", "color": "#76B900"},
+        {"name": "Meta", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/meta.svg", "color": "#0866FF"},
+        {"name": "Adobe", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/adobe.svg", "color": "#FF0000"},
+        {"name": "Shopify", "logo": "https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/shopify.svg", "color": "#7AB55C"}
+      ]
+    }
+  },
+  "footer": {
+    "cta": {
+      "title": {"part1": "Ready to make your brand", "highlight": "fly high", "part2": "?"},
+      "subtitle": "Let's discuss your project and elevate your digital presence to new heights.",
+      "button": "Talk to Diego"
+    },
+    "exploreTitle": "Explore",
+    "servicesTitle": "Services",
+    "socialTitle": "Social",
+    "brandDescription": "Elevating brands through strategic digital solutions and creative excellence.",
+    "exploreLinks": ["Home", "Services", "Work", "About"],
+    "serviceLinks": ["Development", "Marketing", "Strategy", "Video Editing"],
+    "socialLinks": ["LinkedIn", "Instagram", "Twitter", "YouTube"],
+    "copyright": "© 2024 KELME STUDIO. All Rights Reserved"
+  }
+}

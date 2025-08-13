@@ -4,7 +4,7 @@ import { Instagram, Linkedin, Twitter, Youtube } from "lucide-react"
 import Image from "next/image"
 import { LanguageSelector } from "./language-selector"
 import { GradientButton } from "@/components/ui/gradient-button"
-import { useI18n } from "@/lib/i18n"
+import { useMessages } from 'next-intl'
 
 const socialIconMap: Record<string, React.ReactElement> = {
   LinkedIn: <Linkedin className="w-4 h-4" />,
@@ -16,8 +16,8 @@ const socialIconMap: Record<string, React.ReactElement> = {
 }
 
 export function Footer() {
-  const { dictionary } = useI18n()
-  const f = dictionary.footer
+  const messages: any = useMessages()
+  const f = messages.footer
   return (
     <footer className="bg-[#0F0E0D]">
       {/* CTA Section */}

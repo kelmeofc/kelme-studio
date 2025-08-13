@@ -1,18 +1,12 @@
+import createNextIntlPlugin from 'next-intl/plugin';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  i18n: {
-    locales: ["en", "pt"],
-    defaultLocale: "en",
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true,
-  },
-}
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
+  images: { unoptimized: true }
+};
 
-export default nextConfig
+// Integra plugin next-intl apontando para request config
+const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
+export default withNextIntl(nextConfig);

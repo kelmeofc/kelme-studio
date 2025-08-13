@@ -5,25 +5,26 @@ import { ChevronDown, Menu, X } from "lucide-react"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { GradientButton } from "@/components/ui/gradient-button"
 import { LanguageSelector } from "@/components/language-selector"
-import { useI18n } from "@/lib/i18n"
+import { useTranslations, useMessages } from 'next-intl'
+import { Link } from '@/i18n/navigation'
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const { t, dictionary } = useI18n()
-
-  const menus = dictionary.navbar.menus
+  const t = useTranslations()
+  const messages: any = useMessages()
+  const menus = messages.navbar.menus
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0F0E0D]/95 backdrop-blur-xl border-b border-[#CB8D0F]/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <div className="flex items-center space-x-3">
+          <Link href="/" className="flex items-center space-x-3">
             <img src="/kelme-icon.svg" alt="Kelme Studio" className="h-8 w-8" />
             <div className="font-bold text-lg text-[#F7F7F7] font-satoshi uppercase tracking-wider">
               KELME<span className="font-light text-[#CB8D0F]">STUDIO</span>
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">

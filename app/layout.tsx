@@ -1,39 +1,28 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { Inter } from "next/font/google"
-import "./globals.css"
-import Script from "next/script"
-import { I18nProvider } from "@/lib/i18n"
-import { redirect } from 'next/navigation'
+import type { ReactNode } from 'react';
+import './globals.css';
+import { Inter } from 'next/font/google';
+import Script from 'next/script';
+import { NextIntlClientProvider } from 'next-intl';
+import { getLocale, getMessages } from 'next-intl/server';
 
 const satoshi = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-satoshi",
-  weight: ["400", "500", "600", "700", "800", "900"],
-})
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-satoshi',
+  weight: ['400','500','600','700','800','900']
+});
 
-export const metadata: Metadata = {
-  title: "Kelme Studio - Your Brand Deserves to Fly High",
-  description:
-    "We elevate ambitious brands beyond the horizon, crafting digital experiences that soar above the competition and capture the sky.",
-    generator: 'v0.app'
-}
-
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // Redirect raiz para default locale
-  if (typeof window === 'undefined') {
-    // Em SSR podemos renderizar html mínimo enquanto redirect ocorre via middleware futura
-  }
+export default async function RootLayout({ children }: { children: ReactNode }) {
+  const locale = await getLocale();
+  const messages = await getMessages();
   return (
-    <html lang="en" className={`${satoshi.variable} antialiased dark`}>
+    <html lang={locale} className={`${satoshi.variable} antialiased dark`}>
       <head>
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" strategy="beforeInteractive" />
-        <meta httpEquiv="refresh" content="0; url=/en" />
       </head>
       <body className="font-satoshi bg-[#0F0E0D] text-[#F7F7F7]">
-        <I18nProvider initialLocale="en">{children}</I18nProvider>
+        <NextIntlClientProvider locale={locale} messages={messages}>{children}</NextIntlClientProvider>
       </body>
     </html>
-  )
+  );
 }

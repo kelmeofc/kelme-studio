@@ -1,14 +1,14 @@
 "use client"
 
 import { useState } from "react"
-import { useI18n } from "@/lib/i18n"
+import { useMessages } from 'next-intl'
 import { ExternalLink } from "lucide-react"
 import Image from "next/image"
 import { GradientButton } from "@/components/ui/gradient-button" // Import new gradient button
 
 export function Work() {
-  const { dictionary } = useI18n()
-  const portfolioItems: any[] = dictionary.work.items
+  const messages: any = useMessages()
+  const portfolioItems: any[] = messages.work.items
   const [hoveredItem, setHoveredItem] = useState<number | null>(null)
 
   return (
@@ -16,9 +16,9 @@ export function Work() {
       <div className="max-w-7xl mx-auto">
         <div className="mb-20">
           <h2 className="text-4xl lg:text-6xl font-bold text-[#F7F7F7] mb-6 font-satoshi uppercase tracking-tight">
-            {dictionary.work.sectionTitle}
+            {messages.work.sectionTitle}
           </h2>
-          <p className="text-lg text-[#F7F7F7]/60 max-w-2xl font-satoshi">{dictionary.work.sectionSubtitle}</p>
+          <p className="text-lg text-[#F7F7F7]/60 max-w-2xl font-satoshi">{messages.work.sectionSubtitle}</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-1">
@@ -67,7 +67,7 @@ export function Work() {
 
         <div className="text-center mt-20">
           <GradientButton className="inline-flex items-center gap-2 px-6 py-3 transition-colors">
-            {dictionary.work.viewButton.toUpperCase()}
+            {messages.work.viewButton.toUpperCase()}
           </GradientButton>
         </div>
       </div>

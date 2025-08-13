@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 import { Code, Megaphone, Palette, Video } from "lucide-react"
-import { useI18n } from "@/lib/i18n"
+import { useMessages } from 'next-intl'
 
 // Mapeia ícones por possíveis categorias (EN/PT)
 const iconMap: Record<string, React.ReactElement> = {
@@ -17,18 +17,18 @@ const iconMap: Record<string, React.ReactElement> = {
 
 export function Services() {
   const [activeService, setActiveService] = useState(0)
-  const { dictionary } = useI18n()
-  const services: { number: string; category: string; description: string; items: string[] }[] = dictionary.services.list
+  const messages: any = useMessages()
+  const services: { number: string; category: string; description: string; items: string[] }[] = messages.services.list
 
   return (
     <section className="py-32 px-6 lg:px-12 bg-[#F7F7F7]">
       <div className="max-w-7xl mx-auto">
         <div className="mb-20">
           <h2 className="text-4xl lg:text-6xl font-bold text-[#0F0E0D] mb-6 font-satoshi uppercase tracking-tight">
-            {dictionary.services.sectionTitle}
+            {messages.services.sectionTitle}
           </h2>
           <p className="text-lg text-[#0F0E0D]/60 max-w-2xl font-satoshi">
-            {dictionary.services.sectionSubtitle}
+            {messages.services.sectionSubtitle}
           </p>
         </div>
 

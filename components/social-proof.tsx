@@ -2,7 +2,7 @@
 
 import { Star, Quote, Trophy, Users } from "lucide-react"
 import Image from "next/image"
-import { useI18n } from "@/lib/i18n"
+import { useMessages } from 'next-intl'
 
 function BrandLogo({ logo, name, color }: { logo: string; name: string; color: string }) {
   return (
@@ -26,10 +26,10 @@ function BrandLogo({ logo, name, color }: { logo: string; name: string; color: s
 }
 
 export function SocialProof() {
-  const { dictionary } = useI18n()
-  const tp = dictionary.socialProof.testimonials
-  const ap = dictionary.socialProof.awards
-  const pp = dictionary.socialProof.partners
+  const messages: any = useMessages()
+  const tp = messages.socialProof.testimonials
+  const ap = messages.socialProof.awards
+  const pp = messages.socialProof.partners
   const iconMap: Record<string, React.ReactElement> = {
     trophy: <Trophy className="w-6 h-6" />,
     star: <Star className="w-6 h-6" />,

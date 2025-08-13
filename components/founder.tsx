@@ -1,11 +1,11 @@
 "use client"
 
 import Image from "next/image"
-import { useI18n } from "@/lib/i18n"
+import { useMessages } from 'next-intl'
 
 export function Founder() {
-  const { dictionary } = useI18n()
-  const f = dictionary.founder
+  const messages: any = useMessages()
+  const f = messages.founder
   return (
     <section className="py-32 px-4 bg-[#0F0E0D]">
       <div className="max-w-6xl mx-auto">
