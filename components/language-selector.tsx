@@ -30,12 +30,12 @@ export function LanguageSelector() {
         </GradientButton>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-[140px] p-1">
-        {languages.map(lang => {
+    {languages.map(lang => {
           if (lang.code === locale) return null; // não mostrar o já selecionado
           // pathname já vem sem ou com prefixo conforme config; trocar só o locale base
           const targetPath = pathname === '/' ? '/' : pathname;
           return (
-            <Link href="/" locale={lang.code}>
+      <Link key={lang.code} href={targetPath} locale={lang.code}>
               <DropdownMenuItem
                 className="flex items-center gap-2 px-3 py-2 rounded-lg font-satoshi text-base hover:bg-[#CB8D0F]/10 focus:bg-[#CB8D0F]/10"
               >

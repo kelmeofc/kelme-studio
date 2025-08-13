@@ -1,7 +1,4 @@
-import { locales, defaultLocale, localePrefix } from './i18n/config';
+import {routing} from './i18n/routing';
 
-export default {
-  locales,
-  defaultLocale,
-  localePrefix
-};
+// Exporta diretamente o objeto de routing conforme documentação
+export default routing;
