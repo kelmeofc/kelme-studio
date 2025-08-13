@@ -1,8 +1,18 @@
 import createMiddleware from 'next-intl/middleware';
 import {routing} from './i18n/routing';
 
-export default createMiddleware(routing);
+// Middleware aprimorado com detecção automática de idioma
+export default createMiddleware({
+  // Usar a configuração central de roteamento
+  locales: routing.locales,
+  defaultLocale: routing.defaultLocale,
+  localePrefix: routing.localePrefix,
+  
+  // Habilitar detecção automática de idioma
+  localeDetection: true
+});
 
 export const config = {
-  matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)'
+  // Não aplicar middleware aos arquivos estáticos e APIs
+  matcher: ['/((?!api|trpc|_next|_vercel|.*\\..*).*)']
 };

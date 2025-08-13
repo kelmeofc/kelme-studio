@@ -5,7 +5,9 @@ import { GradientButton } from "@/components/ui/gradient-button";
 import ReactCountryFlag from "react-country-flag";
 import { ChevronDown } from "lucide-react";
 import { useLocale } from 'next-intl';
-import { usePathname, useRouter, Link } from '@/i18n/navigation';
+import { usePathname, useRouter } from '@/i18n/navigation';
+
+import { getLocale } from "next-intl/server";
 
 const languages = [
   { code: 'pt', label: 'Português', country: 'BR' },
@@ -30,19 +32,34 @@ export function LanguageSelector() {
         </GradientButton>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-[140px] p-1">
-    {languages.map(lang => {
+        {languages.map(lang => {
           if (lang.code === locale) return null; // não mostrar o já selecionado
-          // pathname já vem sem ou com prefixo conforme config; trocar só o locale base
-          const targetPath = pathname === '/' ? '/' : pathname;
           return (
-      <Link key={lang.code} href={targetPath} locale={lang.code}>
-              <DropdownMenuItem
-                className="flex items-center gap-2 px-3 py-2 rounded-lg font-satoshi text-base hover:bg-[#CB8D0F]/10 focus:bg-[#CB8D0F]/10"
-              >
+            <DropdownMenuItem
+              key={lang.code}
+              onSelect={(e) => {
+                e.preventDefault();
+                // Implementação baseada na documentação official do next-intl
+                
+                // 1. Usar uma abordagem diferente para forçar uma navegação completa
+                const href = pathname === '/' ? '/' : pathname;
+                
+                // 2. Definir cookie de locale manualmente antes de navegar
+                document.cookie = `NEXT_LOCALE=${lang.code};path=/;max-age=31536000`;
+                
+                // 3. Em vez de usar o router, redirecionar usando window.location
+                // Isso garante um refresh completo da página e aplicação imediata das mudanças de locale
+                window.location.href = pathname === '/' 
+                  ? `/${lang.code}` 
+                  : `/${lang.code}${pathname}`;
+              }}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg font-satoshi text-base hover:bg-[#CB8D0F]/10 focus:bg-[#CB8D0F]/10 cursor-pointer"
+            >
+              <>
                 <ReactCountryFlag countryCode={lang.country} svg style={{ width: 20, height: 20, borderRadius: '50%', objectFit: 'cover' }} />
                 <span>{lang.label}</span>
-              </DropdownMenuItem>
-            </Link>
+              </>
+            </DropdownMenuItem>
           );
         })}
       </DropdownMenuContent>
