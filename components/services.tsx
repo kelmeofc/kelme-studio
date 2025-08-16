@@ -1,94 +1,102 @@
 "use client"
 
-import React, { useState } from "react"
-import { Code, Megaphone, Palette, Video, ArrowRight } from "lucide-react"
-import { useMessages } from 'next-intl'
+import React from "react"
+import { Code, Megaphone, Palette, Video, ArrowRight, ChevronRight } from "lucide-react"
+import { useMessages, useTranslations } from 'next-intl'
 
 // Mapeia ícones por possíveis categorias (EN/PT)
 const iconMap: Record<string, React.ReactElement> = {
-  Development: <Code className="w-12 h-12" />,
-  Marketing: <Megaphone className="w-12 h-12" />,
-  Strategy: <Palette className="w-12 h-12" />,
-  "Video Editing": <Video className="w-12 h-12" />,
-  Desenvolvimento: <Code className="w-12 h-12" />,
-  "Edição de Vídeo": <Video className="w-12 h-12" />,
-  Estratégia: <Palette className="w-12 h-12" />,
+  Development: <Code className="w-7 h-7" />,
+  Marketing: <Megaphone className="w-7 h-7" />,
+  Strategy: <Palette className="w-7 h-7" />,
+  "Video Editing": <Video className="w-7 h-7" />,
+  Desenvolvimento: <Code className="w-7 h-7" />,
+  "Edição de Vídeo": <Video className="w-7 h-7" />,
+  Estratégia: <Palette className="w-7 h-7" />,
 }
 
 export function Services() {
-  const [hoveredService, setHoveredService] = useState<number | null>(null)
   const messages: any = useMessages()
+  const t = useTranslations()
   const services: { number: string; category: string; description: string; items: string[] }[] = messages.services.list
 
   return (
-    <section className="py-32 px-6 lg:px-12 bg-[#F7F7F7]">
+    <section className="py-28 px-6 lg:px-12 bg-[#0F0E0D]" id="services">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-20">
-          <h2 className="text-4xl lg:text-6xl font-bold text-[#0F0E0D] mb-6 font-satoshi uppercase tracking-tight">
-            {messages.services.sectionTitle}
-          </h2>
-          <p className="text-lg text-[#0F0E0D]/60 max-w-3xl font-satoshi leading-relaxed">
-            {messages.services.sectionSubtitle}
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-          {services.map((service, index: number) => (
-            <div
-              key={service.category}
-              className="bg-white rounded-lg shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
-              onMouseEnter={() => setHoveredService(index)}
-              onMouseLeave={() => setHoveredService(null)}
-            >
-              <div className="p-8 flex flex-col h-full">
-                <div className="flex justify-between items-center mb-6">
-                  <span className="text-sm font-medium font-satoshi text-[#CB8D0F]">
-                    {service.number}
-                  </span>
-                  <div className="w-8 h-8 rounded-full bg-[#F7F7F7] flex items-center justify-center">
-                    <ArrowRight className="w-4 h-4 text-[#0F0E0D]" />
-                  </div>
-                </div>
-                
-                <div className="flex flex-col items-center mb-6 transition-transform duration-300 transform hover:scale-110">
-                  <div className="text-[#CB8D0F] mb-4">
-                    {iconMap[service.category] || <Code className="w-12 h-12" />}
-                  </div>
-                  <h3 className="text-xl font-semibold font-satoshi uppercase tracking-wide text-center text-[#0F0E0D] mb-2">
-                    {service.category.toUpperCase()}
-                  </h3>
-                </div>
-                
-                <p className="text-[#0F0E0D]/80 font-satoshi leading-relaxed text-center mb-6">
-                  {service.description}
-                </p>
-                
-                <div className={`mt-auto transition-opacity duration-300 ${hoveredService === index ? 'opacity-100' : 'opacity-0 md:opacity-0 lg:opacity-0'} sm:opacity-100`}>
-                  <div className="border-t border-[#0F0E0D]/10 pt-4 mt-4">
-                    <div className="flex flex-wrap gap-2 justify-center">
-                      {service.items.map((item, i) => (
-                        <span 
-                          key={i}
-                          className="text-xs font-medium bg-[#F7F7F7] text-[#0F0E0D]/70 px-3 py-1 rounded-full"
-                        >
-                          {item}
-                        </span>
-                      ))}
+        {/* Seção de Introdução */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
+          <div>
+            <h2 className="text-3xl lg:text-4xl font-bold text-[#F7F7F7] mb-5 font-satoshi">
+              {messages.services.sectionTitle} & abordagem
+            </h2>
+            <p className="text-lg text-[#F7F7F7]/70 font-satoshi leading-relaxed">
+              {messages.services.sectionSubtitle}
+            </p>
+          </div>
+          <div className="relative h-full flex items-center justify-center">
+            <div className="absolute w-72 h-72 bg-[#CB8D0F]/10 rounded-full opacity-30 filter blur-xl"></div>
+            <div className="relative">
+              <div className="p-6 backdrop-blur-sm bg-[#0F0E0D]/30 border border-[#CB8D0F]/20 rounded-xl">
+                <div className="grid grid-cols-2 gap-4">
+                  {[1, 2, 3, 4].map((i) => (
+                    <div key={i} className="flex items-center p-3 bg-[#0F0E0D]/70 rounded-lg border border-[#CB8D0F]/10">
+                      <div className="w-2 h-2 rounded-full bg-[#CB8D0F] mr-2"></div>
+                      <p className="text-[#F7F7F7]/80 text-sm font-medium">
+                        {t(`services.highlights.${i}`)}
+                      </p>
                     </div>
-                  </div>
+                  ))}
+                </div>
+                <div className="mt-4 text-[#F7F7F7]/60 text-sm text-center">
+                  {t('services.approachHighlight')}
                 </div>
               </div>
             </div>
-          ))}
+          </div>
         </div>
-        
-        <div className="flex justify-center">
+
+        {/* Categoria Principal */}
+        {services.map((service, serviceIndex) => (
+          <div key={service.category} className="mb-24 last:mb-0">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="h-16 w-16 relative flex items-center justify-center">
+                <div className="absolute inset-0 rounded-full bg-[#CB8D0F]/20 opacity-60"></div>
+                <div className="relative text-[#CB8D0F]">
+                  {iconMap[service.category] || <Code className="w-7 h-7" />}
+                </div>
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold text-[#F7F7F7]">
+                  {service.category}
+                </h3>
+                <p className="text-[#F7F7F7]/70 mt-1">
+                  {service.description}
+                </p>
+              </div>
+            </div>
+            
+            {/* Lista de itens em formato de grade */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-4 pl-4 md:pl-20">
+              {service.items.map((item, i) => (
+                <div key={i} className="flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-[#CB8D0F]"></div>
+                  <span className="text-[#F7F7F7]/90">
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+
+        {/* CTA */}
+        <div className="flex justify-center mt-16">
           <a 
             href="#contact" 
-            className="bg-[#0F0E0D] hover:bg-[#CB8D0F] text-white font-semibold py-4 px-8 rounded-lg transition-colors duration-300 flex items-center gap-2 font-satoshi"
+            className="bg-[#CB8D0F] text-[#0F0E0D] font-medium py-3 px-8 rounded-full transition-all duration-300 hover:bg-[#CB8D0F]/90 hover:shadow-lg flex items-center gap-2"
           >
             {messages.navbar.letsTalk}
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-4 h-4" />
           </a>
         </div>
       </div>

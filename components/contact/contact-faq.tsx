@@ -1,0 +1,122 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+import { useState } from "react";
+import { Plus, Minus } from "lucide-react";
+import { cn } from "@/lib/utils";
+
+/**
+ * Componente FAQ (Perguntas frequentes)
+ */
+export function ContactFAQ() {
+  const t = useTranslations("contact");
+  const [openIndex, setOpenIndex] = useState(0);
+  
+  // Função para alternar FAQ aberto/fechado
+  const toggleFAQ = (index: number) => {
+    setOpenIndex(openIndex === index ? -1 : index);
+  };
+  
+  return (
+    <section className="mt-24 mb-12">
+      <header className="text-center mb-16">
+        <h2 className="text-3xl font-bold mb-4 font-satoshi">{t("faqTitle")}</h2>
+        <p className="text-xl opacity-80 max-w-2xl mx-auto">
+          {t("faqDescription")}
+        </p>
+      </header>
+      
+      <div className="max-w-3xl mx-auto">
+        <div className="space-y-4">
+          {faqItems.map((faq, index) => (
+            <FAQItem 
+              key={index}
+              question={t(faq.questionKey)}
+              answer={t(faq.answerKey)}
+              isOpen={openIndex === index}
+              toggle={() => toggleFAQ(index)}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/**
+ * Dados de FAQ (usando chaves de tradução)
+ */
+const faqItems = [
+  {
+    questionKey: "faq1Question",
+    answerKey: "faq1Answer"
+  },
+  {
+    questionKey: "faq2Question",
+    answerKey: "faq2Answer"
+  },
+  {
+    questionKey: "faq3Question",
+    answerKey: "faq3Answer"
+  },
+  {
+    questionKey: "faq4Question",
+    answerKey: "faq4Answer"
+  },
+  {
+    questionKey: "faq5Question",
+    answerKey: "faq5Answer"
+  }
+];
+
+/**
+ * Componente de item FAQ individual
+ */
+type FAQItemProps = {
+  question: string;
+  answer: string;
+  isOpen: boolean;
+  toggle: () => void;
+};
+
+function FAQItem({ question, answer, isOpen, toggle }: FAQItemProps) {
+  return (
+    <div className={cn(
+      "bg-[#191817] rounded-xl border overflow-hidden transition-all duration-300",
+      isOpen ? "border-[#CB8D0F]/40" : "border-[#CB8D0F]/20"
+    )}>
+      <button
+        onClick={toggle}
+        className="w-full flex items-center justify-between p-6 text-left"
+        aria-expanded={isOpen}
+      >
+        <h3 className="text-lg font-medium font-satoshi">{question}</h3>
+        <div className={cn(
+          "p-2 rounded-lg transition-colors",
+          isOpen ? "bg-[#CB8D0F]/30" : "bg-[#CB8D0F]/20"
+        )}>
+          {isOpen ? (
+            <Minus className="h-4 w-4 text-[#CB8D0F]" />
+          ) : (
+            <Plus className="h-4 w-4 text-[#CB8D0F]" />
+          )}
+        </div>
+      </button>
+      
+      <div 
+        className={cn(
+          "grid transition-all duration-300",
+          isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+        )}
+      >
+        <div className="overflow-hidden">
+          <div className="px-6 pb-6">
+            <p className="text-[#F7F7F7]/80">
+              {answer}
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

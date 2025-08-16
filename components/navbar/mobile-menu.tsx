@@ -2,6 +2,7 @@ import React from "react";
 import { navbarStyles as styles } from "./styles";
 import { MenuSection } from "./use-nav-menus";
 import { GradientButton } from "@/components/ui/gradient-button";
+import { Link } from '@/i18n/navigation';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -105,9 +106,11 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
           
           {/* CTA Button */}
           <div className={styles.mobileDivider}>
-            <GradientButton className="w-full" size="sm">
-              {letsTalkLabel}
-            </GradientButton>
+            <Link href="/contact">
+              <GradientButton className="w-full" size="sm">
+                {letsTalkLabel}
+              </GradientButton>
+            </Link>
           </div>
         </div>
       </div>
