@@ -48,6 +48,74 @@
   --primary-foreground: oklch(0.205 0 0);
   --secondary: oklch(0.269 0 0);
   --secondary-foreground: oklch(0.985 0 0);
+  
+/* Estilos para headings em seções */
+section h1, 
+section h2, 
+section h3, 
+section h4, 
+section h5, 
+section h6 {
+  text-transform: uppercase;
+  font-family: var(--font-russo), sans-serif;
+  letter-spacing: -0.02em;
+  font-weight: 400;
+}
+
+section h1 {
+  font-size: 3rem;
+  line-height: 1.1;
+}
+
+@media (min-width: 1024px) {
+  section h1 {
+    font-size: 4.5rem;
+  }
+}
+
+section h2 {
+  font-size: 2.25rem;
+  line-height: 1.2;
+}
+
+@media (min-width: 1024px) {
+  section h2 {
+    font-size: 3rem;
+  }
+}
+
+section h3 {
+  font-size: 1.5rem;
+  line-height: 1.3;
+}
+
+@media (min-width: 1024px) {
+  section h3 {
+    font-size: 1.875rem;
+  }
+}
+
+section h4 {
+  font-size: 1.25rem;
+  line-height: 1.4;
+}
+
+@media (min-width: 1024px) {
+  section h4 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Adiciona um sublinhado dourado para headings principais */
+section h2.section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  margin-top: 16px;
+  background-color: #CB8D0F;
+  border-radius: 2px;
+}
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
   --accent: oklch(0.269 0 0);

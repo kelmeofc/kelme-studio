@@ -63,16 +63,16 @@
     ]
   },
   "work": {
-    "sectionTitle": "Portfólio",
+    "sectionTitle": "Projetos em Destaque",
     "sectionSubtitle": "A base do nosso portfólio demonstra quem realmente somos. Investimos em pessoas excepcionais e seguimos a visão de longo prazo.",
-    "viewButton": "Ver Portfólio",
+    "viewButton": "Ver todos os projetos",
     "items": [
-      {"id": 1, "title": "Revolução Fintech", "category": "MICRO-SAAS", "description": "Plataforma financeira completa com insights de IA e automação de operações.", "image": "/placeholder-opudz.png", "year": "2024"},
-      {"id": 2, "title": "Ecommerce de Luxo", "category": "SHOPIFY", "description": "Marca de moda premium com experiência imersiva e recursos de AR.", "image": "/luxury-fashion-ecommerce.png", "year": "2024"},
-      {"id": 3, "title": "Landing Startup", "category": "LANDING PAGE", "description": "Landing page de alta conversão que aumentou conversões em 340% em 30 dias.", "image": "/modern-startup-hero.png", "year": "2023"},
-      {"id": 4, "title": "Identidade Tech", "category": "BRANDING", "description": "Reformulação completa de marca para empresa de tecnologia emergente.", "image": "/placeholder-c7jvm.png", "year": "2023"},
-      {"id": 5, "title": "Campanha Viral", "category": "MARKETING", "description": "Campanha em redes sociais que alcançou 2M+ usuários e gerou 150% de ROI.", "image": "/placeholder-zbxuv.png", "year": "2024"},
-      {"id": 6, "title": "Solução Enterprise", "category": "DEVELOPMENT", "description": "CRM customizado lidando com 10K+ transações diárias com analytics em tempo real.", "image": "/enterprise-crm-dashboard.png", "year": "2023"}
+      {"id": 1, "title": "Aluguel de iates e aventuras aquáticas", "category": "MICRO-SAAS", "description": "Plataforma financeira completa com insights de IA e automação de operações.", "image": "/placeholder-opudz.png", "year": "2024", "clientName": "AcePlaza", "tags": ["App Mobile", "UI/UX", "iOS"]},
+      {"id": 2, "title": "Plataforma de gerenciamento fitness", "category": "SHOPIFY", "description": "Marca de moda premium com experiência imersiva e recursos de AR.", "image": "/luxury-fashion-ecommerce.png", "year": "2024", "clientName": "ClubReady", "tags": ["SaaS", "Web App"]},
+      {"id": 3, "title": "Aplicativo de refeições saudáveis", "category": "LANDING PAGE", "description": "Landing page de alta conversão que aumentou conversões em 340% em 30 dias.", "image": "/modern-startup-hero.png", "year": "2023", "clientName": "CountFit", "tags": ["Mobile App", "Fitness"]},
+      {"id": 4, "title": "Marketplace de NFT", "category": "BRANDING", "description": "Reformulação completa de marca para empresa de tecnologia emergente.", "image": "/placeholder-c7jvm.png", "year": "2023", "clientName": "Getshid", "tags": ["Blockchain", "Marketplace"]},
+      {"id": 5, "title": "Plataforma de gerenciamento de dados", "category": "MARKETING", "description": "Campanha em redes sociais que alcançou 2M+ usuários e gerou 150% de ROI.", "image": "/placeholder-zbxuv.png", "year": "2024", "clientName": "Ravel", "tags": ["SaaS", "B2B", "CRM"]},
+      {"id": 6, "title": "Serviço de lavanderia personalizado", "category": "DEVELOPMENT", "description": "CRM customizado lidando com 10K+ transações diárias com analytics em tempo real.", "image": "/enterprise-crm-dashboard.png", "year": "2023", "clientName": "Doobi", "tags": ["Service Design", "Consumer App"]}
     ]
   },
   "founder": {

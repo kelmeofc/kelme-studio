@@ -26,7 +26,7 @@ export function Services() {
         {/* Seção de Introdução */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-20">
           <div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-[#F7F7F7] mb-5 font-satoshi">
+            <h2 className="section-title text-[#F7F7F7] mb-5">
               {messages.services.sectionTitle} & abordagem
             </h2>
             <p className="text-lg text-[#F7F7F7]/70 font-satoshi leading-relaxed">

@@ -74,7 +74,7 @@ export function Hero() {
   <div className="absolute inset-0 bottom-32 z-10 w-full h-full pointer-events-none">
         <DarkVeil 
           speed={3}
-          hueShift={208}
+          hueShift={30}
           noiseIntensity={0}
           scanlineFrequency={0.5}
           scanlineIntensity={0}
@@ -83,7 +83,7 @@ export function Hero() {
       </div>
 
   <div className="max-w-4xl w-full flex flex-col items-center justify-center text-center z-10 px-6 py-32 lg:px-32 lg:py-40">
-  <AnimatedFadeIn as="h1" delay={0} className="text-5xl lg:text-7xl font-bold text-[#F7F7F7] leading-tight mb-8 font-satoshi uppercase tracking-tight text-center">
+  <AnimatedFadeIn as="h1" delay={0} className="text-5xl lg:text-7xl text-[#F7F7F7] leading-tight mb-8 uppercase tracking-tight text-center">
           {t("hero.title.line1")}<br />
           <span className="text-[#CB8D0F]">{t("hero.title.line2")}</span><br />
           <span className="text-[#F7F7F7]">{t("hero.title.line3")}</span>
