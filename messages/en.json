@@ -145,6 +145,24 @@
     "termsOfUse": "Terms of Use",
     "privacyPolicy": "Privacy Policy"
   },
+  "metadata": {
+    "home": {
+      "title": "Kelme Studio - Digital Agency & Creative Studio",
+      "description": "We elevate ambitious brands beyond the horizon, creating digital experiences that stand out from the competition."
+    },
+    "contact": {
+      "title": "Contact - Kelme Studio",
+      "description": "Get in touch with Kelme Studio to transform your digital presence. We're ready to turn your vision into reality."
+    },
+    "about": {
+      "title": "About - Kelme Studio",
+      "description": "Meet Kelme Studio, a digital agency and creative studio specialized in elevating your brand with strategic digital solutions."
+    },
+    "work": {
+      "title": "Portfolio - Kelme Studio",
+      "description": "Explore our portfolio of innovative digital projects and see how we transform our clients' online presence."
+    }
+  },
   "contact": {
     "formTitle": "Let's Talk",
     "formSubtitle": "Tell us about your project and how we can help transform your vision into reality.",

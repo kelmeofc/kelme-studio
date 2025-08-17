@@ -3,7 +3,10 @@ import '@/app/globals.css';
 import { Inter, Russo_One } from 'next/font/google';
 import Script from 'next/script';
 import { NextIntlClientProvider } from 'next-intl';
-import { getLocale, getMessages } from 'next-intl/server';
+import { getLocale, getMessages, getTranslations } from 'next-intl/server';
+import { Metadata } from 'next';
+import { AppLocale, locales } from '@/i18n/routing';
+import { generatePageMetadata } from '@/lib/metadata';
 
 const satoshi = Inter({
   subsets: ['latin'],
@@ -19,9 +22,32 @@ const russoOne = Russo_One({
   weight: ['400']
 });
 
-export default async function RootLayout({ children }: { children: ReactNode }) {
+/**
+ * Gera os metadados para a página raiz, usando o utilitário unificado
+ */
+export async function generateMetadata({
+  params
+}: {
+  params: { locale: AppLocale };
+}): Promise<Metadata> {
+  return generatePageMetadata({
+    namespace: 'metadata.home',
+    titleKey: 'title',
+    descriptionKey: 'description',
+    params
+  });
+}
+
+export default async function RootLayout({ 
+  children,
+  params 
+}: { 
+  children: ReactNode;
+  params: { locale: AppLocale }
+}) {
   const locale = await getLocale();
   const messages = await getMessages();
+  
   return (
     <html lang={locale} className={`${satoshi.variable} ${russoOne.variable} antialiased dark`}>
       <head>

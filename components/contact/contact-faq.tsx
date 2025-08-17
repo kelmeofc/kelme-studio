@@ -4,6 +4,13 @@ import { useTranslations } from "next-intl";
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";
+import type { FAQItem } from "../ui/faq-schema";
+import { getFAQItems } from "@/lib/faq-utils";
+
+/**
+ * Dados de FAQ obtidos a partir do utilitário central
+ */
+const faqItems = getFAQItems(5);
 
 /**
  * Componente FAQ (Perguntas frequentes)
@@ -42,32 +49,6 @@ export function ContactFAQ() {
     </section>
   );
 }
-
-/**
- * Dados de FAQ (usando chaves de tradução)
- */
-const faqItems = [
-  {
-    questionKey: "faq1Question",
-    answerKey: "faq1Answer"
-  },
-  {
-    questionKey: "faq2Question",
-    answerKey: "faq2Answer"
-  },
-  {
-    questionKey: "faq3Question",
-    answerKey: "faq3Answer"
-  },
-  {
-    questionKey: "faq4Question",
-    answerKey: "faq4Answer"
-  },
-  {
-    questionKey: "faq5Question",
-    answerKey: "faq5Answer"
-  }
-];
 
 /**
  * Componente de item FAQ individual

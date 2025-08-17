@@ -139,6 +139,24 @@
     "termsOfUse": "Termos de Uso",
     "privacyPolicy": "Política de Privacidade"
   },
+  "metadata": {
+    "home": {
+      "title": "Kelme Studio - Agência Digital & Estúdio Criativo",
+      "description": "Elevamos marcas ambiciosas além do horizonte, criando experiências digitais que se destacam da concorrência."
+    },
+    "contact": {
+      "title": "Contato - Kelme Studio",
+      "description": "Entre em contato com a Kelme Studio para transformar sua presença digital. Estamos prontos para transformar sua visão em realidade."
+    },
+    "about": {
+      "title": "Sobre - Kelme Studio",
+      "description": "Conheça a Kelme Studio, uma agência digital e estúdio criativo especializado em elevar sua marca com soluções digitais estratégicas."
+    },
+    "work": {
+      "title": "Portfólio - Kelme Studio",
+      "description": "Explore nosso portfólio de projetos digitais inovadores e veja como transformamos a presença online de nossos clientes."
+    }
+  },
   "contact": {
     "formTitle": "Vamos Conversar",
     "formSubtitle": "Conte-nos sobre seu projeto e como podemos ajudar a transformar sua visão em realidade.",
