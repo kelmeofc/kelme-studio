@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Oculta a barra de navegação principal quando o menu mobile está aberto */
+body.mobile-menu-open .navbar-main {
+  display: none;
+}
+
 :root {
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);

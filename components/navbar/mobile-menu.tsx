@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { navbarStyles as styles } from "./styles";
 import { MenuSection } from "./use-nav-menus";
 import { GradientButton } from "@/components/ui/gradient-button";
 import { Link } from '@/i18n/navigation';
+import { X, ChevronDown, ChevronUp, PenTool, BookOpen } from "lucide-react";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -29,89 +30,218 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
   workLabel,
   insightsLabel
 }) => {
+  // Estado para controlar quais seções de accordion estão abertas
+  const [openSections, setOpenSections] = useState<{
+    services: boolean;
+    work: boolean;
+    insights: boolean;
+  }>({
+    services: false,
+    work: false,
+    insights: false
+  });
+
+  // Toggle para abrir/fechar seções do accordion
+  const toggleSection = (section: 'services' | 'work' | 'insights') => {
+    setOpenSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }));
+  };
+
+  // Gerencia efeitos quando o menu está aberto
+  useEffect(() => {
+    if (isOpen) {
+      // Impede rolagem do body
+      document.body.style.overflow = 'hidden';
+      // Oculta a barra de navegação principal
+      document.body.classList.add('mobile-menu-open');
+    } else {
+      // Restaura rolagem do body
+      document.body.style.overflow = '';
+      // Restaura a barra de navegação principal
+      document.body.classList.remove('mobile-menu-open');
+    }
+    
+    return () => {
+      // Limpeza ao desmontar o componente
+      document.body.style.overflow = '';
+      document.body.classList.remove('mobile-menu-open');
+    };
+  }, [isOpen]);
+  
   if (!isOpen) return null;
 
   return (
-    <div className={styles.mobileOverlay} onClick={onClose}>
-      <div className={styles.mobileBackdrop} />
+    <div className={styles.mobileOverlay}>
+      <div className={styles.mobileBackdrop} onClick={onClose} />
       <div 
-        className={styles.mobileMenu}
+        className="fixed inset-0 z-50 md:hidden flex flex-col bg-[#0F0E0D] h-full w-full"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className={styles.mobileContent}>
-          {/* Services Section */}
-          <div className={styles.mobileSection}>
-            <h3 className={styles.mobileSectionTitle}>
-              {servicesLabel}
-            </h3>
-            {servicesSections.map((section, idx) => (
-              <div key={idx} className="ml-2">
-                <h4 className={styles.mobileCategoryTitle}>
-                  {section.title}
-                </h4>
-                <ul className={styles.mobileSectionList}>
-                  {section.items.map((item: any, i: number) => (
-                    <li key={i}>
-                      <a href="#" className={styles.mobileLinkFlex}>
-                        {item.label}
-                      </a>
-                    </li>
+        {/* Cabeçalho com logo e botão de fechar */}
+        <div className="flex justify-between items-center p-6 border-b border-[#CB8D0F]/20">
+          <div className="flex items-center space-x-2">
+            <img src="/kelme-logo.svg" alt="Kelme Studio" className="h-8" />
+          </div>
+          <button 
+            onClick={onClose}
+            className="p-2 rounded-full hover:bg-[#1A1918] text-[#F7F7F7] hover:text-[#CB8D0F] transition-colors"
+            aria-label="Fechar menu"
+          >
+            <X size={24} />
+          </button>
+        </div>
+        
+        {/* Área de conteúdo rolável */}
+        <div className="flex-1 overflow-y-auto p-6">
+          {/* Navegação Principal */}
+          <nav>
+            {/* About Link */}
+            <div className="mb-6 border-b border-[#CB8D0F]/10 pb-4">
+              <a
+                href="#about"
+                className="text-[#F7F7F7] hover:text-[#CB8D0F] font-satoshi text-xl font-medium py-2 block"
+                onClick={onClose}
+              >
+                {aboutLabel}
+              </a>
+            </div>
+            
+            {/* Services Section - Accordion */}
+            <div className="mb-6 border-b border-[#CB8D0F]/10 pb-4">
+              <button 
+                className="flex items-center justify-between w-full text-left text-[#F7F7F7] hover:text-[#CB8D0F] font-satoshi text-xl font-medium py-2"
+                onClick={() => toggleSection('services')}
+                aria-expanded={openSections.services}
+                aria-controls="services-content"
+              >
+                <span>{servicesLabel}</span>
+                {openSections.services ? (
+                  <ChevronUp className="h-5 w-5 text-[#CB8D0F]" />
+                ) : (
+                  <ChevronDown className="h-5 w-5 text-[#CB8D0F]" />
+                )}
+              </button>
+              
+              {openSections.services && (
+                <div id="services-content" className="mt-3 grid grid-cols-2 gap-x-4 gap-y-6 max-h-[40vh] overflow-y-auto pr-2">
+                  {servicesSections.map((section, idx) => (
+                    <div key={idx} className="border-l-2 border-[#CB8D0F]/30 pl-3">
+                      <h4 className="text-[#CB8D0F] text-sm font-medium uppercase mb-2">
+                        {section.title}
+                      </h4>
+                      <ul className="space-y-2">
+                        {section.items.slice(0, 3).map((item: any, i: number) => (
+                          <li key={i}>
+                            <a 
+                              href="#" 
+                              className="flex items-center space-x-2 text-[#F7F7F7]/80 hover:text-[#CB8D0F] text-sm py-1"
+                              onClick={onClose}
+                            >
+                              <span className="text-[#CB8D0F] w-5 h-5 flex items-center justify-center">
+                                {item.icon}
+                              </span>
+                              <span>{item.label}</span>
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-          
-          {/* Work Section */}
-          <div className={`${styles.mobileDivider} ${styles.mobileSection}`}>
-            <h3 className={styles.mobileSectionTitle}>
-              {workLabel}
-            </h3>
-            <ul className={styles.mobileSectionList}>
-              {workItems.map((item: string, i: number) => (
-                <li key={i}>
-                  <a href="#" className={styles.mobileLink}>
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          {/* About Link */}
-          <div className={styles.mobileDivider}>
-            <a
-              href="#about"
-              className={styles.mobileNavLink}
-            >
-              {aboutLabel}
-            </a>
-          </div>
-          
-          {/* Insights Section */}
-          <div className={`${styles.mobileDivider} ${styles.mobileSection}`}>
-            <h3 className={styles.mobileSectionTitle}>
-              {insightsLabel}
-            </h3>
-            <ul className={styles.mobileSectionList}>
-              {insightsItems.map((item: string, i: number) => (
-                <li key={i}>
-                  <a href="#" className={styles.mobileLink}>
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          
-          {/* CTA Button */}
-          <div className={styles.mobileDivider}>
-            <Link href="/contact">
-              <GradientButton className="w-full" size="sm">
-                {letsTalkLabel}
-              </GradientButton>
-            </Link>
-          </div>
+                </div>
+              )}
+            </div>
+            
+            {/* Work Section - Accordion */}
+            <div className="mb-6 border-b border-[#CB8D0F]/10 pb-4">
+              <button 
+                className="flex items-center justify-between w-full text-left text-[#F7F7F7] hover:text-[#CB8D0F] font-satoshi text-xl font-medium py-2"
+                onClick={() => toggleSection('work')}
+                aria-expanded={openSections.work}
+                aria-controls="work-content"
+              >
+                <span>{workLabel}</span>
+                {openSections.work ? (
+                  <ChevronUp className="h-5 w-5 text-[#CB8D0F]" />
+                ) : (
+                  <ChevronDown className="h-5 w-5 text-[#CB8D0F]" />
+                )}
+              </button>
+              
+              {openSections.work && (
+                <div id="work-content" className="mt-2 grid grid-cols-2 gap-x-4">
+                  <div className="border-l-2 border-[#CB8D0F]/30 pl-3 py-1">
+                    <ul className="space-y-3">
+                      {workItems.map((item: string, i: number) => (
+                        <li key={i}>
+                          <a 
+                            href="#" 
+                            className="flex items-center space-x-2 text-[#F7F7F7]/80 hover:text-[#CB8D0F] text-sm py-1"
+                            onClick={onClose}
+                          >
+                            <span className="text-[#CB8D0F] w-5 h-5 flex items-center justify-center">
+                              <PenTool className="h-4 w-4" />
+                            </span>
+                            <span>{item}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+            </div>
+            
+            {/* Insights Section - Accordion */}
+            <div className="mb-6 border-b border-[#CB8D0F]/10 pb-4">
+              <button 
+                className="flex items-center justify-between w-full text-left text-[#F7F7F7] hover:text-[#CB8D0F] font-satoshi text-xl font-medium py-2"
+                onClick={() => toggleSection('insights')}
+                aria-expanded={openSections.insights}
+                aria-controls="insights-content"
+              >
+                <span>{insightsLabel}</span>
+                {openSections.insights ? (
+                  <ChevronUp className="h-5 w-5 text-[#CB8D0F]" />
+                ) : (
+                  <ChevronDown className="h-5 w-5 text-[#CB8D0F]" />
+                )}
+              </button>
+              
+              {openSections.insights && (
+                <div id="insights-content" className="mt-2 grid grid-cols-2 gap-x-4">
+                  <div className="border-l-2 border-[#CB8D0F]/30 pl-3 py-1">
+                    <ul className="space-y-3">
+                      {insightsItems.map((item: string, i: number) => (
+                        <li key={i}>
+                          <a 
+                            href="#" 
+                            className="flex items-center space-x-2 text-[#F7F7F7]/80 hover:text-[#CB8D0F] text-sm py-1"
+                            onClick={onClose}
+                          >
+                            <span className="text-[#CB8D0F] w-5 h-5 flex items-center justify-center">
+                              <BookOpen className="h-4 w-4" />
+                            </span>
+                            <span>{item}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              )}
+            </div>
+          </nav>
+        </div>
+
+        {/* CTA Button - Fixo na parte inferior */}
+        <div className="p-6 border-t border-[#CB8D0F]/20 bg-[#0F0E0D] mt-auto">
+          <Link href="/contact">
+            <GradientButton className="w-full" size="lg" onClick={onClose}>
+              {letsTalkLabel}
+            </GradientButton>
+          </Link>
         </div>
       </div>
     </div>

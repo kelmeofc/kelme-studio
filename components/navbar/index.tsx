@@ -115,7 +115,7 @@ export function Navbar() {
 
   return (
     <>
-      <nav className={containerClass}>
+      <nav className={`${containerClass} navbar-main`}>
         <div className={styles.innerWrapper}>
           <div className={styles.flexContainer}>
             {/* Logo */}
@@ -175,11 +175,9 @@ export function Navbar() {
               <button
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className={styles.mobileMenuBtn}
+                aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
               >
-                {mobileMenuOpen 
-                  ? <X className={styles.mobileMenuIcon} /> 
-                  : <Menu className={styles.mobileMenuIcon} />
-                }
+                <Menu className={styles.mobileMenuIcon} />
               </button>
             </div>
           </div>

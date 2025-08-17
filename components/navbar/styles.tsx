@@ -34,17 +34,16 @@ export const navbarStyles = {
   
   // Mobile menu overlay
   mobileOverlay: "fixed inset-0 z-40 md:hidden",
-  mobileBackdrop: "fixed inset-0 bg-black bg-opacity-50",
-  mobileMenu: "fixed top-16 right-0 bottom-0 w-full max-w-xs bg-[#0F0E0D] shadow-xl transform transition-transform duration-300 ease-in-out",
+  mobileBackdrop: "fixed inset-0 bg-black bg-opacity-70",
   
   // Mobile menu content
-  mobileContent: "p-6 space-y-6",
-  mobileSectionTitle: "text-sm text-[#CB8D0F] font-bold uppercase font-satoshi tracking-wider",
+  mobileContent: "p-6 space-y-6 flex-grow overflow-y-auto",
+  mobileSectionTitle: "text-lg text-[#CB8D0F] font-bold uppercase font-satoshi tracking-wider",
   mobileSection: "space-y-4",
-  mobileCategoryTitle: "text-xs text-[#F7F7F7]/60 uppercase font-medium mb-2",
-  mobileSectionList: "ml-2 space-y-2",
-  mobileLink: "text-[#F7F7F7] hover:text-[#CB8D0F] font-satoshi text-sm",
-  mobileLinkFlex: "flex items-center text-[#F7F7F7] hover:text-[#CB8D0F] font-satoshi text-sm py-1",
+  mobileCategoryTitle: "text-sm text-[#F7F7F7]/70 uppercase font-medium mb-2",
+  mobileSectionList: "ml-2 space-y-3",
+  mobileLink: "text-[#F7F7F7] hover:text-[#CB8D0F] font-satoshi text-base transition-colors duration-200",
+  mobileLinkFlex: "flex items-center text-[#F7F7F7] hover:text-[#CB8D0F] font-satoshi text-base py-2 transition-colors duration-200",
   mobileDivider: "border-t border-[#CB8D0F]/20 pt-6",
-  mobileNavLink: "block text-[#F7F7F7] hover:text-[#CB8D0F] font-satoshi uppercase text-sm font-medium py-2"
+  mobileNavLink: "block text-[#F7F7F7] hover:text-[#CB8D0F] font-satoshi text-xl font-medium py-2 transition-colors duration-200"
 };
