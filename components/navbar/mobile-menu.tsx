@@ -4,6 +4,7 @@ import { MenuSection } from "./use-nav-menus";
 import { GradientButton } from "@/components/ui/gradient-button";
 import { Link } from '@/i18n/navigation';
 import { X, ChevronDown, ChevronUp, PenTool, BookOpen } from "lucide-react";
+import { LanguageSelector } from "@/components/language-selector";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -80,17 +81,20 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Cabeçalho com logo e botão de fechar */}
-        <div className="flex justify-between items-center p-6 border-b border-[#CB8D0F]/20">
+        <div className="flex justify-between items-center p-4 border-b border-[#CB8D0F]/20">
           <div className="flex items-center space-x-2">
             <img src="/kelme-logo.svg" alt="Kelme Studio" className="h-8" />
           </div>
-          <button 
-            onClick={onClose}
-            className="p-2 rounded-full hover:bg-[#1A1918] text-[#F7F7F7] hover:text-[#CB8D0F] transition-colors"
-            aria-label="Fechar menu"
-          >
-            <X size={24} />
-          </button>
+          <div className="flex items-center space-x-4">
+            <LanguageSelector />
+            <button 
+              onClick={onClose}
+              className="rounded-full hover:bg-[#1A1918] text-[#F7F7F7] hover:text-[#CB8D0F] transition-colors ml-2"
+              aria-label="Fechar menu"
+            >
+              <X size={24} />
+            </button>
+          </div>
         </div>
         
         {/* Área de conteúdo rolável */}
