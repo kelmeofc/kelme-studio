@@ -41,7 +41,7 @@ export function SocialProof() {
         {/* Testimonials */}
         <div className="mb-24">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#CB8D0F]/20 to-[#CB8D0F]/10 backdrop-blur-sm border border-[#CB8D0F]/20 mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[#27D182]/20 to-[#27D182]/10 backdrop-blur-sm border border-[#27D182]/20 mb-6">
               <Quote className="w-4 h-4 text-[#CB8D0F]" />
             </div>
             <h2 className="text-4xl md:text-6xl font-bold text-[#F7F7F7] mb-6 uppercase tracking-tight">

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import '@/app/globals.css';
-import { Inter, Russo_One } from 'next/font/google';
+import { Inter, Rubik } from 'next/font/google';
 import Script from 'next/script';
 import { NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages, getTranslations } from 'next-intl/server';
@@ -15,11 +15,11 @@ const satoshi = Inter({
   weight: ['400','500','600','700','800','900']
 });
 
-const russoOne = Russo_One({
+const rubik = Rubik({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-russo',
-  weight: ['400']
+  variable: '--font-rubik',
+  weight: ['400', '500', '600', '700']
 });
 
 /**
@@ -49,7 +49,7 @@ export default async function RootLayout({
   const messages = await getMessages();
   
   return (
-    <html lang={locale} className={`${satoshi.variable} ${russoOne.variable} antialiased dark`}>
+    <html lang={locale} className={`${satoshi.variable} ${rubik.variable} antialiased dark`}>
       <head>
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" strategy="beforeInteractive" />
       </head>

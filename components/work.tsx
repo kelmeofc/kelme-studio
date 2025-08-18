@@ -23,7 +23,7 @@ export function Work() {
   // Get tag information based on category
   // Esta função não está sendo utilizada agora que usamos o estilo dourado da marca
   const getTagInfo = (category: string) => {
-    return { bg: "bg-[#CB8D0F]/20", text: "text-[#CB8D0F]" }
+    return { bg: "bg-[#27D182]/20", text: "text-[#27D182]" }
   }
 
   return (
@@ -44,7 +44,7 @@ export function Work() {
               onClick={() => setActiveFilter(category)}
               className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                 activeFilter === category 
-                  ? "bg-[#CB8D0F] text-[#0F0E0D]" 
+                  ? "bg-[#27D182] text-[#0F0E0D]" 
                   : "bg-[#F7F7F7]/10 text-[#F7F7F7] hover:bg-[#F7F7F7]/20"
               }`}
             >
@@ -76,7 +76,7 @@ export function Work() {
               <div className="p-6">
                 {/* Client name with location */}
                 <div className="mb-2">
-                  <span className="text-sm font-semibold text-[#CB8D0F]">
+                  <span className="text-sm font-semibold text-[#27D182]">
                     {item.clientName || "Kelme Studio"}
                   </span>
                 </div>
@@ -93,7 +93,7 @@ export function Work() {
                 {/* Tags */}
                 <div className="flex flex-wrap gap-2 mt-4">
                   {/* Main category tag */}
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#CB8D0F]/20 text-[#CB8D0F]">
+                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-[#27D182]/20 text-[#27D182]">
                     {item.category}
                   </span>
                   
@@ -115,7 +115,7 @@ export function Work() {
                   hoveredItem === item.id ? "opacity-100 translate-x-0" : "opacity-0 translate-x-4"
                 }`}
               >
-                <div className="w-10 h-10 bg-[#CB8D0F] rounded-full flex items-center justify-center">
+                <div className="w-10 h-10 bg-[#27D182] rounded-full flex items-center justify-center">
                   <ArrowRight className="w-5 h-5 text-[#0F0E0D]" />
                 </div>
               </div>

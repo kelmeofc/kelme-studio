@@ -103,6 +103,7 @@ export function Component() {
 - A navegação principal é gerenciada pelo componente `Navbar`
 - O hook `useNavMenus()` em `components/navbar/use-nav-menus.tsx` gerencia os dados dos menus
 - Ícones para itens do menu são mapeados em `components/navbar/icon-mapper.tsx`
+- A interface visual utiliza a nova cor de destaque verde (#27D182) em substituição ao dourado anterior
 
 ### Gerenciamento de Estado
 
@@ -187,7 +188,8 @@ npm run build
 
 - Use classes Tailwind diretamente nos componentes
 - Para cores consistentes, use as variáveis definidas em globals.css
-- Esquema principal: Fundo escuro (#0F0E0D), texto claro (#F7F7F7), destaque dourado (#CB8D0F)
+- Esquema principal: Fundo escuro (#0F0E0D), texto claro (#F7F7F7), destaque verde (#27D182)
+- Gradient principal: Azul (#017DDD) → Verde (#27D182) → Amarelo (#FAD007) com stops em 0%, 52%, 100%
 
 ## Escalabilidade e Manutenção
 
@@ -224,12 +226,13 @@ npm run build
 ### Tom de Voz e Estilo de Escrita
 
 - **Estilo Dave Gerhardt**: Direto, conversacional e orientado a resultados
-- **Tom de Voz**: Confiante, profissional mas acessível, inspirador
+- **Tom de Voz**: Confiante, inovador, profissional mas acessível, inspirador
 - **Características principais**:
   - Linguagem clara e direta
-  - Foco em benefícios e resultados
-  - Storytelling para ilustrar conceitos complexos
+  - Foco em inovação, crescimento e resultados sustentáveis
+  - Storytelling para ilustrar transformações digitais
   - Uso seletivo de perguntas retóricas para engajamento
+  - Incorporação de elementos relacionados à inovação e sustentabilidade
 
 ### Estrutura de Textos
 
@@ -260,20 +263,26 @@ npm run build
 
 ### Paleta de Cores
 
-- **Dourado** (#CB8D0F): Cor primária, representa excelência e premium
+- **Verde** (#27D182): Cor primária de destaque, representa crescimento e inovação
+- **Azul** (#017DDD): Cor complementar, representa confiança e profissionalismo
+- **Amarelo** (#FAD007): Cor de apoio, representa criatividade e otimismo
 - **Branco** (#F7F7F7): Cor secundária, representa clareza e espaço
-- **Cinza Escuro** (#0F0E0D): Cor de fundo, representa solidez e elegância
+- **Preto/Cinza Escuro** (#0F0E0D): Cor de fundo, representa solidez e elegância
+- **Verde Secundário** (#3F9E59): Cor de apoio para áreas verdes
+- **Cinza Claro** (#D7D7D7): Cor para elementos neutros secundários
 
 **Uso das Cores:**
-- Dourado: Elementos de destaque, CTAs, acentos
+- Verde: Elementos de destaque, CTAs, acentos principais
+- Azul: Elementos interativos secundários, seções de destaque
+- Amarelo: Elementos de notificação, destaques terciários
 - Branco: Texto principal, áreas de respiro
-- Cinza Escuro: Fundos, textos secundários
+- Preto/Cinza Escuro: Fundos, textos secundários
 
 ### Simbolismo e Elementos da Marca
 
-- **Conceitos-Chave**: Asas, voo, elevação, visão além do horizonte, perspectiva superior
-- **Logo**: Águia com cabeça voltada à esquerda, garras à vista, asa direita destacada em dourado
-- **Metáforas Visuais**: Altitude, expansão, liberdade, visão estratégica
+- **Conceitos-Chave**: Crescimento, inovação, fluidez, visão além do horizonte, perspectiva superior
+- **Logo**: Águia com cabeça voltada à esquerda, garras à vista, com elementos destacados em gradiente verde-azul
+- **Metáforas Visuais**: Altitude, expansão, liberdade, visão estratégica, transformação digital
 
 ### Componentes de Design
 
@@ -281,27 +290,28 @@ npm run build
   - Biblioteca principal: Lucide Icons para interface
   - Simple Icons para redes sociais e empresas
   - Estilo minimalista com linhas finas
-- **Cards**: Design futurista com efeito glassmorphism preto e dourado
-- **Botões**: Arredondados com bordas douradas (raio: 8px)
+- **Cards**: Design futurista com efeito glassmorphism e acentos em gradiente verde-azul
+- **Botões**: Arredondados com gradientes de verde a azul ou bordas verdes (raio: 8px)
 - **Tipografia**: 
   - Fonte principal: Satoshi (pesos: 300, 400, 500, 700)
-  - Títulos: Satoshi Bold
+  - Títulos: Rubik
   - Corpo: Satoshi Regular/Light
 
 ### Diretrizes de Imagem
 
 - **Estilo Fotográfico**: Imagens de alta resolução com tons contrastantes
-- **Tratamento**: Leve sobreposição dourada nas imagens para unidade visual
-- **Temas Visuais**: Ambientes modernos, tecnologia, profissionalismo, inovação
+- **Tratamento**: Leve sobreposição com gradiente verde-azul nas imagens para unidade visual
+- **Temas Visuais**: Ambientes modernos, tecnologia, profissionalismo, inovação, sustentabilidade
 - **Composição**: Espaço negativo generoso, regra dos terços, linhas direcionais ascendentes
 
 ### Animações e Interações
 
 - **Princípios**: Suaves, elegantes, com propósito funcional
 - **Transições**: Curvas de easing naturais, duração média de 300-500ms
-- **Hover**: Efeitos sutis de escala (1.02-1.05) e destaque dourado
+- **Hover**: Efeitos sutis de escala (1.02-1.05) com destaque em verde (#27D182)
 - **Scroll**: Animações de fade e slide em elementos ao entrar na viewport
-- **Microinterações**: Feedback visual para ações do usuário (clicks, submissões)
+- **Microinterações**: Feedback visual para ações do usuário com acentos em gradiente verde-azul
+- **Gradientes**: Transições fluidas entre azul (#017DDD), verde (#27D182) e amarelo (#FAD007)
 
 ### Design Responsivo
 
@@ -321,10 +331,10 @@ npm run build
 ### Diretrizes de Acessibilidade
 
 - **Conformidade**: Segue diretrizes WCAG 2.1 nível AA
-- **Contraste de Cores**: Mínimo 4.5:1 para textos padrão, 3:1 para textos grandes
+- **Contraste de Cores**: Mínimo 4.5:1 para textos padrão, 3:1 para textos grandes (verde #27D182 deve ser usado em elementos maiores ou com contraste reforçado)
 - **Navegação por Teclado**: Todos os elementos interativos são acessíveis via teclado
 - **Atributos ARIA**: Utilizados para melhorar a experiência com leitores de tela
-- **Estados de Foco**: Visíveis e consistentes em todos os elementos interativos
+- **Estados de Foco**: Visíveis e consistentes com contornos em verde (#27D182)
 - **Textos Alternativos**: Todas as imagens possuem descrições apropriadas
 - **Estrutura Semântica**: Uso apropriado de cabeçalhos (H1-H6) e elementos HTML5
 - **Formulários**: Labels explícitos e mensagens de erro acessíveis

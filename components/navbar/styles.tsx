@@ -20,7 +20,7 @@ export const navbarStyles = {
   logoContainer: "flex items-center space-x-3",
   logoImage: "h-8 w-8",
   logoText: "font-bold text-lg text-[#F7F7F7] font-satoshi uppercase tracking-wider",
-  logoAccent: "font-light text-[#CB8D0F]",
+  logoAccent: "font-light text-white",
   
   // Desktop navigation items
   desktopNav: "hidden md:flex items-center space-x-8",

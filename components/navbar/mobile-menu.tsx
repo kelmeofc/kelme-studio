@@ -5,6 +5,7 @@ import { GradientButton } from "@/components/ui/gradient-button";
 import { Link } from '@/i18n/navigation';
 import { X, ChevronDown, ChevronUp, PenTool, BookOpen } from "lucide-react";
 import { LanguageSelector } from "@/components/language-selector";
+import Image from "next/image";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -81,15 +82,22 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Cabeçalho com logo e botão de fechar */}
-        <div className="flex justify-between items-center p-4 border-b border-[#CB8D0F]/20">
+        <div className="flex justify-between items-center p-4 border-b border-[#27D182]/20">
           <div className="flex items-center space-x-2">
-            <img src="/kelme-logo.svg" alt="Kelme Studio" className="h-8" />
+            <Image 
+              src="/kelme-logo.svg" 
+              alt="Kelme Studio" 
+              width={32} 
+              height={32} 
+              className="h-8 w-auto" 
+              priority
+            />
           </div>
           <div className="flex items-center space-x-4">
             <LanguageSelector />
             <button 
               onClick={onClose}
-              className="rounded-full hover:bg-[#1A1918] text-[#F7F7F7] hover:text-[#CB8D0F] transition-colors ml-2"
+              className="rounded-full hover:bg-[#1A1918] text-[#F7F7F7] hover:text-[#27D182] transition-colors ml-2"
               aria-label="Fechar menu"
             >
               <X size={24} />
@@ -102,10 +110,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
           {/* Navegação Principal */}
           <nav>
             {/* About Link */}
-            <div className="mb-6 border-b border-[#CB8D0F]/10 pb-4">
+            <div className="mb-6 border-b border-[#27D182]/10 pb-4">
               <a
                 href="#about"
-                className="text-[#F7F7F7] hover:text-[#CB8D0F] font-satoshi text-xl font-medium py-2 block"
+                className="text-[#F7F7F7] hover:text-[#27D182] font-satoshi text-xl font-medium py-2 block"
                 onClick={onClose}
               >
                 {aboutLabel}
@@ -113,26 +121,26 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
             </div>
             
             {/* Services Section - Accordion */}
-            <div className="mb-6 border-b border-[#CB8D0F]/10 pb-4">
+            <div className="mb-6 border-b border-[#27D182]/10 pb-4">
               <button 
-                className="flex items-center justify-between w-full text-left text-[#F7F7F7] hover:text-[#CB8D0F] font-satoshi text-xl font-medium py-2"
+                className="flex items-center justify-between w-full text-left text-[#F7F7F7] hover:text-[#27D182] font-satoshi text-xl font-medium py-2"
                 onClick={() => toggleSection('services')}
                 aria-expanded={openSections.services}
                 aria-controls="services-content"
               >
                 <span>{servicesLabel}</span>
                 {openSections.services ? (
-                  <ChevronUp className="h-5 w-5 text-[#CB8D0F]" />
+                  <ChevronUp className="h-5 w-5 text-[#27D182]" />
                 ) : (
-                  <ChevronDown className="h-5 w-5 text-[#CB8D0F]" />
+                  <ChevronDown className="h-5 w-5 text-[#27D182]" />
                 )}
               </button>
               
               {openSections.services && (
                 <div id="services-content" className="mt-3 grid grid-cols-2 gap-x-4 gap-y-6 max-h-[40vh] overflow-y-auto pr-2">
                   {servicesSections.map((section, idx) => (
-                    <div key={idx} className="border-l-2 border-[#CB8D0F]/30 pl-3">
-                      <h4 className="text-[#CB8D0F] text-sm font-medium uppercase mb-2">
+                    <div key={idx} className="border-l-2 border-[#27D182]/30 pl-3">
+                      <h4 className="text-[#27D182] text-sm font-medium uppercase mb-2">
                         {section.title}
                       </h4>
                       <ul className="space-y-2">
@@ -140,10 +148,10 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
                           <li key={i}>
                             <a 
                               href="#" 
-                              className="flex items-center space-x-2 text-[#F7F7F7]/80 hover:text-[#CB8D0F] text-sm py-1"
+                              className="flex items-center space-x-2 text-[#F7F7F7]/80 hover:text-[#27D182] text-sm py-1"
                               onClick={onClose}
                             >
-                              <span className="text-[#CB8D0F] w-5 h-5 flex items-center justify-center">
+                              <span className="text-[#27D182] w-5 h-5 flex items-center justify-center">
                                 {item.icon}
                               </span>
                               <span>{item.label}</span>
@@ -158,18 +166,18 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
             </div>
             
             {/* Work Section - Accordion */}
-            <div className="mb-6 border-b border-[#CB8D0F]/10 pb-4">
+            <div className="mb-6 border-b border-[#27D182]/10 pb-4">
               <button 
-                className="flex items-center justify-between w-full text-left text-[#F7F7F7] hover:text-[#CB8D0F] font-satoshi text-xl font-medium py-2"
+                className="flex items-center justify-between w-full text-left text-[#F7F7F7] hover:text-[#27D182] font-satoshi text-xl font-medium py-2"
                 onClick={() => toggleSection('work')}
                 aria-expanded={openSections.work}
                 aria-controls="work-content"
               >
                 <span>{workLabel}</span>
                 {openSections.work ? (
-                  <ChevronUp className="h-5 w-5 text-[#CB8D0F]" />
+                  <ChevronUp className="h-5 w-5 text-[#27D182]" />
                 ) : (
-                  <ChevronDown className="h-5 w-5 text-[#CB8D0F]" />
+                  <ChevronDown className="h-5 w-5 text-[#27D182]" />
                 )}
               </button>
               
@@ -198,18 +206,18 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
             </div>
             
             {/* Insights Section - Accordion */}
-            <div className="mb-6 border-b border-[#CB8D0F]/10 pb-4">
+            <div className="mb-6 border-b border-[#27D182]/10 pb-4">
               <button 
-                className="flex items-center justify-between w-full text-left text-[#F7F7F7] hover:text-[#CB8D0F] font-satoshi text-xl font-medium py-2"
+                className="flex items-center justify-between w-full text-left text-[#F7F7F7] hover:text-[#27D182] font-satoshi text-xl font-medium py-2"
                 onClick={() => toggleSection('insights')}
                 aria-expanded={openSections.insights}
                 aria-controls="insights-content"
               >
                 <span>{insightsLabel}</span>
                 {openSections.insights ? (
-                  <ChevronUp className="h-5 w-5 text-[#CB8D0F]" />
+                  <ChevronUp className="h-5 w-5 text-[#27D182]" />
                 ) : (
-                  <ChevronDown className="h-5 w-5 text-[#CB8D0F]" />
+                  <ChevronDown className="h-5 w-5 text-[#27D182]" />
                 )}
               </button>
               
@@ -240,7 +248,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
         </div>
 
         {/* CTA Button - Fixo na parte inferior */}
-        <div className="p-6 border-t border-[#CB8D0F]/20 bg-[#0F0E0D] mt-auto">
+        <div className="p-6 border-t border-[#27D182]/20 bg-[#0F0E0D] mt-auto">
           <Link href="/contact">
             <GradientButton className="w-full" size="lg" onClick={onClose}>
               {letsTalkLabel}
