@@ -15,11 +15,11 @@ const MenuItem: React.FC<MenuItemProps> = ({ icon, label, href = "#", className 
   return (
     <a 
       href={href}
-      className={`group flex items-center py-3 px-4 rounded-lg hover:bg-[#CB8D0F]/10 transition-all duration-300 ${className}`}
+      className={`group flex items-center py-3 px-4 rounded-lg hover:bg-[#27D182]/10 transition-all duration-300 ${className}`}
     >
       <div className="menu-link__text-wrap flex items-center gap-4">
         {icon && (
-          <div className="w-6 h-6 flex items-center justify-center text-[#CB8D0F]">
+          <div className="w-6 h-6 flex items-center justify-center text-[#27D182]">
             {typeof icon === 'string' ? (
               <img src={icon} alt="" className="w-5 h-5 object-contain" />
             ) : (
@@ -27,10 +27,10 @@ const MenuItem: React.FC<MenuItemProps> = ({ icon, label, href = "#", className 
             )}
           </div>
         )}
-        <div className="text-[#F7F7F7] group-hover:text-[#CB8D0F] transition-colors duration-300">{label}</div>
+        <div className="text-[#F7F7F7] font-satoshi group-hover:text-[#27D182] transition-colors duration-300">{label}</div>
       </div>
       <div className="overflow-hidden ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <div className="menu__link-arrow text-[#CB8D0F]">
+        <div className="menu__link-arrow text-[#27D182]">
           <ChevronRight size={16} />
         </div>
       </div>
@@ -54,14 +54,14 @@ export const MegaDropdown: React.FC<MegaDropdownProps> = ({ isOpen, sections, on
 
   return (
     <div 
-      className="absolute top-full left-0 w-full bg-[#0F0E0D]/95 backdrop-blur-xl border-t border-[#CB8D0F]/20 py-8"
+      className="absolute top-full left-0 w-full bg-[#0F0E0D]/95 backdrop-blur-xl border-t border-[#27D182]/20 py-8"
       onClick={() => onClose()}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {sections.map((section, index) => (
-            <div key={index} className={`${index === 0 ? "lg:border-r lg:border-[#CB8D0F]/20" : ""}`}>
-              <h3 className="text-sm font-medium font-satoshi uppercase tracking-wider text-[#CB8D0F] mb-4">
+            <div key={index} className={`${index === 0 ? "lg:border-r lg:border-[#27D182]/20" : ""}`}>
+              <h3 className="text-sm font-medium font-satoshi uppercase tracking-wider text-[#27D182] mb-4">
                 {section.title}
               </h3>
               <div className="space-y-1">

@@ -164,8 +164,9 @@
     }
   },
   "contact": {
-    "formTitle": "Let's Talk",
+    "formTitle": "Fly high",
     "formSubtitle": "Tell us about your project and how we can help transform your vision into reality.",
+    "getInTouch": "Get in Touch",
     "responseTime": "We will respond within 24 hours",
     "ndaAvailable": "We'll sign an NDA if requested",
     "dedicatedTeam": "Access to dedicated specialists",

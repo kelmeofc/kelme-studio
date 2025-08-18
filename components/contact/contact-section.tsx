@@ -19,11 +19,24 @@ export function ContactSection() {
 
   return (
     <section className="relative bg-black text-[#F7F7F7] py-16 md:py-24 overflow-hidden min-h-screen">
-    
+      {/* Gradient background effect */}
+   
+      
+      {/* Accent circles */}
+      <div className="absolute top-32 left-10 w-64 h-64 rounded-full bg-[#27D182]/5 blur-3xl"></div>
+      <div className="absolute bottom-40 right-10 w-80 h-80 rounded-full bg-[#017DDD]/5 blur-3xl"></div>
+      
       <Container className="relative z-10">
         <header className="mb-16 text-center">
+          <div className="inline-block mb-4">
+            <span className="inline-block px-4 py-1 rounded-full bg-[#27D182]/10 text-[#27D182] font-medium text-sm">
+              {t("getInTouch")}
+            </span>
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tighter font-satoshi">
-            {t("formTitle")}
+            <span className="bg-gradient-to-r from-[#017DDD] via-[#27D182] to-[#FAD007] text-transparent bg-clip-text">
+              {t("formTitle")}
+            </span>
           </h1>
           <p className="text-xl opacity-80 max-w-2xl mx-auto">
             {t("formSubtitle")}

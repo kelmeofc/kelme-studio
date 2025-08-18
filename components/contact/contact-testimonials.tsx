@@ -29,7 +29,7 @@ export function ContactTestimonials() {
           <div className="flex items-center space-x-2">
             <div className="flex">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-5 w-5 text-[#CB8D0F] fill-[#CB8D0F]" />
+                <Star key={i} className="h-5 w-5 text-[#27D182] fill-[#27D182]" />
               ))}
             </div>
             <span className="text-xl font-bold">4.9</span>
@@ -41,13 +41,13 @@ export function ContactTestimonials() {
         <div className="relative">
           <button 
             onClick={goToPrevious}
-            className="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 bg-[#191817] p-2 rounded-full border border-[#CB8D0F]/20 hover:bg-[#CB8D0F]/10 transition-colors z-10"
+            className="absolute -left-4 md:-left-12 top-1/2 -translate-y-1/2 bg-[#191817] p-2 rounded-full border border-[#27D182]/20 hover:bg-[#27D182]/10 transition-colors z-10"
             aria-label="Depoimento anterior"
           >
-            <ChevronLeft className="h-5 w-5 text-[#CB8D0F]" />
+            <ChevronLeft className="h-5 w-5 text-[#27D182]" />
           </button>
           
-          <div className="bg-[#191817] p-8 rounded-xl border border-[#CB8D0F]/20 relative overflow-hidden">
+          <div className="bg-[#191817] p-8 rounded-xl border border-[#27D182]/20 relative overflow-hidden">
             <div 
               className="transition-transform duration-500 ease-in-out"
               style={{ transform: `translateX(-${activeIndex * 100}%)` }}
@@ -80,10 +80,10 @@ export function ContactTestimonials() {
           
           <button 
             onClick={goToNext}
-            className="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 bg-[#191817] p-2 rounded-full border border-[#CB8D0F]/20 hover:bg-[#CB8D0F]/10 transition-colors z-10"
+            className="absolute -right-4 md:-right-12 top-1/2 -translate-y-1/2 bg-[#191817] p-2 rounded-full border border-[#27D182]/20 hover:bg-[#27D182]/10 transition-colors z-10"
             aria-label="Próximo depoimento"
           >
-            <ChevronRight className="h-5 w-5 text-[#CB8D0F]" />
+            <ChevronRight className="h-5 w-5 text-[#27D182]" />
           </button>
         </div>
         
@@ -93,7 +93,7 @@ export function ContactTestimonials() {
               key={index}
               onClick={() => setActiveIndex(index)}
               className={`h-3 w-3 rounded-full transition-colors ${
-                index === activeIndex ? "bg-[#CB8D0F]" : "bg-[#CB8D0F]/30"
+                index === activeIndex ? "bg-[#27D182]" : "bg-[#27D182]/30"
               }`}
               aria-label={`Ver depoimento ${index + 1}`}
             />

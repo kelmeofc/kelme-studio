@@ -64,7 +64,7 @@ function FAQItem({ question, answer, isOpen, toggle }: FAQItemProps) {
   return (
     <div className={cn(
       "bg-card rounded-xl border overflow-hidden transition-all duration-300",
-      isOpen ? "border-primary/40" : "border-primary/20"
+      isOpen ? "border-[#27D182]/40" : "border-[#27D182]/20"
     )}>
       <button
         onClick={toggle}
@@ -74,12 +74,12 @@ function FAQItem({ question, answer, isOpen, toggle }: FAQItemProps) {
         <h3 className="text-lg font-medium font-satoshi">{question}</h3>
         <div className={cn(
           "p-2 rounded-lg transition-colors",
-          isOpen ? "bg-primary/30" : "bg-primary/20"
+          isOpen ? "bg-[#27D182]/30" : "bg-[#27D182]/20"
         )}>
           {isOpen ? (
-            <Minus className="h-4 w-4 text-primary" />
+            <Minus className="h-4 w-4 text-[#27D182]" />
           ) : (
-            <Plus className="h-4 w-4 text-primary" />
+            <Plus className="h-4 w-4 text-[#27D182]" />
           )}
         </div>
       </button>

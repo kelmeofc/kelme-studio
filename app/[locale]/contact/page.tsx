@@ -42,7 +42,7 @@ export async function generateMetadata({
           url: '/opengraph/kelme-contact-og-banner.png',
           width: 1200,
           height: 630,
-          alt: 'Kelme Studio - Contato'
+          alt: 'Kelme Studio - Contato',
         }
       ],
       locale: params.locale,

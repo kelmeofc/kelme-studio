@@ -158,8 +158,9 @@
     }
   },
   "contact": {
-    "formTitle": "Vamos Conversar",
+    "formTitle": "Voe alto",
     "formSubtitle": "Conte-nos sobre seu projeto e como podemos ajudar a transformar sua visão em realidade.",
+    "getInTouch": "Entre em Contato",
     "responseTime": "Responderemos em até 24 horas",
     "ndaAvailable": "Assinamos NDA se solicitado",
     "dedicatedTeam": "Acesso a especialistas dedicados",

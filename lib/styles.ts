@@ -7,17 +7,17 @@
  * Classes para formulários padronizados
  */
 export const formStyles = {
-  input: "w-full bg-dark border border-emerald/30 rounded-lg p-3 text-light focus:outline-none focus:ring-2 focus:ring-emerald/50",
-  select: "w-full bg-dark border border-emerald/30 rounded-lg p-3 text-light focus:outline-none focus:ring-2 focus:ring-emerald/50 appearance-none",
-  label: "block text-sm font-medium mb-2",
-  checkbox: "h-5 w-5 rounded border-emerald accent-emerald bg-dark",
-  container: "bg-dark-card p-6 md:p-10 rounded-xl border",
+  input: "w-full bg-dark border border-[#27D182]/30 rounded-lg p-3 text-light focus:outline-none focus:ring-2 focus:ring-[#27D182]/50 transition-all hover:border-[#27D182]/50",
+  select: "w-full bg-dark border border-[#27D182]/30 rounded-lg p-3 text-light focus:outline-none focus:ring-2 focus:ring-[#27D182]/50 appearance-none transition-all hover:border-[#27D182]/50",
+  label: "block text-sm font-medium mb-2 text-[#F7F7F7]",
+  checkbox: "h-5 w-5 rounded border-[#27D182] accent-[#27D182] bg-dark",
+  container: "bg-dark-card p-6 md:p-10 rounded-xl border relative overflow-hidden group",
   
   // Estados de borda para formulários
   borderStates: {
-    idle: "border-emerald/20",
-    success: "border-emerald/50",
-    error: "border-destructive/50",
+    idle: "border-[#27D182]/20 hover:shadow-[0_0_15px_rgba(39,209,130,0.15)] transition-shadow",
+    success: "border-[#27D182]/50 shadow-[0_0_20px_rgba(39,209,130,0.3)]",
+    error: "border-destructive/50 shadow-[0_0_20px_rgba(255,0,0,0.2)]",
   }
 };
 

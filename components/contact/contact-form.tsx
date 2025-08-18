@@ -40,7 +40,9 @@ export function ContactForm() {
   
   return (
     <div className={`${formStyles.container} ${formStyles.borderStates[formState]} transition-colors duration-300`}>
-      <h2 className="text-2xl font-bold mb-6 font-satoshi">{t("formTitle")}</h2>
+      <h2 className="text-2xl font-bold mb-6 font-satoshi">
+        <span className="border-b-2 border-[#27D182] pb-1">{t("getInTouch")}</span>
+      </h2>
       
       <div className="space-y-4 mb-10">
         {/* Benefícios destacados */}
@@ -96,7 +98,7 @@ export function ContactForm() {
                 <option value="50000+">R$50.000+</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                <svg className="w-5 h-5 text-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-[#27D182]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </div>
@@ -112,7 +114,7 @@ export function ContactForm() {
           />
           
           <div>
-            <label className="flex items-center space-x-3">
+            <label className="flex items-center space-x-3 hover:text-[#27D182] cursor-pointer transition-colors group">
               <input 
                 type="checkbox" 
                 className={formStyles.checkbox} 
@@ -122,9 +124,9 @@ export function ContactForm() {
           </div>
           
           <div className="pt-4">
-            <p className="text-xs opacity-70 mb-6">
+            <p className="text-xs text-[#D7D7D7] mb-6">
               {t("privacyNotice")} 
-              <a href="/privacy-policy" className="text-emerald hover:underline">
+              <a href="/privacy-policy" className="text-[#27D182] hover:underline">
                 {t("privacyPolicy")}
               </a>
             </p>
@@ -147,11 +149,11 @@ export function ContactForm() {
  */
 function BenefitItem({ text }: { text: string }) {
   return (
-    <div className="flex items-center space-x-3 text-sm">
-      <span className="flex h-6 w-6 rounded-full bg-emerald/20 items-center justify-center flex-shrink-0">
-        <span className="h-4 w-4 rounded-full bg-emerald"></span>
+    <div className="flex items-center space-x-3 text-sm group">
+      <span className="flex h-6 w-6 rounded-full bg-[#27D182]/20 items-center justify-center flex-shrink-0 transition-all group-hover:scale-110">
+        <span className="h-4 w-4 rounded-full bg-[#27D182]"></span>
       </span>
-      <span>{text}</span>
+      <span className="text-[#F7F7F7]">{text}</span>
     </div>
   );
 }
@@ -201,15 +203,16 @@ function SuccessMessage({ resetForm }: { resetForm: () => void }) {
   const t = useTranslations("contact");
   
   return (
-    <div className="text-center py-8">
-      <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-emerald/20 mb-6">
-        <Check className="h-8 w-8 text-emerald" />
+    <div className="text-center py-8 relative">
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-1 bg-gradient-to-r from-[#017DDD] via-[#27D182] to-[#FAD007] rounded-full opacity-70"></div>
+      <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-[#27D182]/20 mb-6 mt-6">
+        <Check className="h-8 w-8 text-[#27D182]" />
       </div>
       <h3 className="text-xl font-bold mb-3 font-satoshi">{t("successTitle")}</h3>
-      <p className="mb-8 opacity-80">
+      <p className="mb-8 text-[#D7D7D7]">
         {t("successMessage")}
       </p>
-      <GradientButton onClick={resetForm} size="sm">
+      <GradientButton onClick={resetForm} size="sm" className="hover:scale-105 transition-transform">
         {t("sendAnother")}
       </GradientButton>
     </div>
@@ -223,15 +226,16 @@ function ErrorMessage({ resetForm }: { resetForm: () => void }) {
   const t = useTranslations("contact");
   
   return (
-    <div className="text-center py-8">
-      <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-destructive/20 mb-6">
-        <AlertCircle className="h-8 w-8 text-destructive" />
+    <div className="text-center py-8 relative">
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-40 h-1 bg-red-500/50 rounded-full"></div>
+      <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-red-500/20 mb-6 mt-6">
+        <AlertCircle className="h-8 w-8 text-red-500" />
       </div>
       <h3 className="text-xl font-bold mb-3 font-satoshi">{t("errorTitle")}</h3>
-      <p className="mb-8 opacity-80">
+      <p className="mb-8 text-[#D7D7D7]">
         {t("errorMessage")}
       </p>
-      <GradientButton onClick={resetForm} size="sm">
+      <GradientButton onClick={resetForm} size="sm" className="hover:scale-105 transition-transform">
         {t("tryAgain")}
       </GradientButton>
     </div>
