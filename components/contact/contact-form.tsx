@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { GradientButton } from "@/components/ui/gradient-button";
 import { Check, AlertCircle } from "lucide-react";
+import { formStyles } from "@/lib/styles";
 
 /**
  * Lista de chaves para benefícios do formulário
@@ -37,15 +38,8 @@ export function ContactForm() {
     }
   };
   
-  // Destacador de formulário com bordas que refletem o estado
-  const formBorderClasses = {
-    idle: "border-[#CB8D0F]/20",
-    success: "border-green-500/50",
-    error: "border-red-500/50",
-  };
-  
   return (
-    <div className={`bg-[#191817] p-6 md:p-10 rounded-xl border ${formBorderClasses[formState]} transition-colors duration-300`}>
+    <div className={`${formStyles.container} ${formStyles.borderStates[formState]} transition-colors duration-300`}>
       <h2 className="text-2xl font-bold mb-6 font-satoshi">{t("formTitle")}</h2>
       
       <div className="space-y-4 mb-10">
@@ -85,7 +79,7 @@ export function ContactForm() {
           />
           
           <div>
-            <label htmlFor="budget" className="block text-sm font-medium mb-2">
+            <label htmlFor="budget" className={formStyles.label}>
               {t("budget")} *
             </label>
             <div className="relative">
@@ -93,7 +87,7 @@ export function ContactForm() {
                 id="budget"
                 required
                 defaultValue=""
-                className="w-full bg-[#0F0E0D] border border-[#CB8D0F]/30 rounded-lg p-3 text-[#F7F7F7] focus:outline-none focus:ring-2 focus:ring-[#CB8D0F]/50 appearance-none"
+                className={formStyles.select}
               >
                 <option value="" disabled>{t("selectBudget")}</option>
                 <option value="5000-15000">R$5.000 - R$15.000</option>
@@ -102,7 +96,7 @@ export function ContactForm() {
                 <option value="50000+">R$50.000+</option>
               </select>
               <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                <svg className="w-5 h-5 text-[#CB8D0F]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-5 h-5 text-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
                 </svg>
               </div>
@@ -121,7 +115,7 @@ export function ContactForm() {
             <label className="flex items-center space-x-3">
               <input 
                 type="checkbox" 
-                className="h-5 w-5 rounded border-[#CB8D0F] accent-[#CB8D0F] bg-[#0F0E0D]" 
+                className={formStyles.checkbox} 
               />
               <span className="text-sm">{t("signNDA")}</span>
             </label>
@@ -130,7 +124,7 @@ export function ContactForm() {
           <div className="pt-4">
             <p className="text-xs opacity-70 mb-6">
               {t("privacyNotice")} 
-              <a href="/privacy-policy" className="text-[#CB8D0F] hover:underline">
+              <a href="/privacy-policy" className="text-emerald hover:underline">
                 {t("privacyPolicy")}
               </a>
             </p>
@@ -154,8 +148,8 @@ export function ContactForm() {
 function BenefitItem({ text }: { text: string }) {
   return (
     <div className="flex items-center space-x-3 text-sm">
-      <span className="flex h-6 w-6 rounded-full bg-[#CB8D0F]/20 items-center justify-center flex-shrink-0">
-        <span className="h-4 w-4 rounded-full bg-[#CB8D0F]"></span>
+      <span className="flex h-6 w-6 rounded-full bg-emerald/20 items-center justify-center flex-shrink-0">
+        <span className="h-4 w-4 rounded-full bg-emerald"></span>
       </span>
       <span>{text}</span>
     </div>
@@ -176,7 +170,7 @@ type FormFieldProps = {
 function FormField({ id, label, type, required, placeholder }: FormFieldProps) {
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-medium mb-2">
+      <label htmlFor={id} className={formStyles.label}>
         {label} {required && "*"}
       </label>
       {type === "textarea" ? (
@@ -184,7 +178,7 @@ function FormField({ id, label, type, required, placeholder }: FormFieldProps) {
           id={id}
           required={required}
           rows={4}
-          className="w-full bg-[#0F0E0D] border border-[#CB8D0F]/30 rounded-lg p-3 text-[#F7F7F7] focus:outline-none focus:ring-2 focus:ring-[#CB8D0F]/50"
+          className={formStyles.input}
           placeholder={placeholder}
         ></textarea>
       ) : (
@@ -192,7 +186,7 @@ function FormField({ id, label, type, required, placeholder }: FormFieldProps) {
           type={type}
           id={id}
           required={required}
-          className="w-full bg-[#0F0E0D] border border-[#CB8D0F]/30 rounded-lg p-3 text-[#F7F7F7] focus:outline-none focus:ring-2 focus:ring-[#CB8D0F]/50"
+          className={formStyles.input}
           placeholder={placeholder}
         />
       )}
@@ -208,8 +202,8 @@ function SuccessMessage({ resetForm }: { resetForm: () => void }) {
   
   return (
     <div className="text-center py-8">
-      <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-green-500/20 mb-6">
-        <Check className="h-8 w-8 text-green-500" />
+      <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-emerald/20 mb-6">
+        <Check className="h-8 w-8 text-emerald" />
       </div>
       <h3 className="text-xl font-bold mb-3 font-satoshi">{t("successTitle")}</h3>
       <p className="mb-8 opacity-80">
@@ -230,8 +224,8 @@ function ErrorMessage({ resetForm }: { resetForm: () => void }) {
   
   return (
     <div className="text-center py-8">
-      <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-red-500/20 mb-6">
-        <AlertCircle className="h-8 w-8 text-red-500" />
+      <div className="inline-flex items-center justify-center h-16 w-16 rounded-full bg-destructive/20 mb-6">
+        <AlertCircle className="h-8 w-8 text-destructive" />
       </div>
       <h3 className="text-xl font-bold mb-3 font-satoshi">{t("errorTitle")}</h3>
       <p className="mb-8 opacity-80">

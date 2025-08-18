@@ -23,13 +23,39 @@ export async function generateMetadata({
 }: {
   params: { locale: AppLocale };
 }): Promise<Metadata> {
-  return generatePageMetadata({
+  const baseMetadata = await generatePageMetadata({
     namespace: 'metadata.contact',
     titleKey: 'title',
     descriptionKey: 'description',
     params,
     path: 'contact'
   });
+  
+  // Adicionar Open Graph metadata
+  return {
+    ...baseMetadata,
+    openGraph: {
+      title: baseMetadata.title as string,
+      description: baseMetadata.description as string,
+      images: [
+        {
+          url: '/opengraph/kelme-contact-og-banner.png',
+          width: 1200,
+          height: 630,
+          alt: 'Kelme Studio - Contato'
+        }
+      ],
+      locale: params.locale,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: baseMetadata.title as string,
+      description: baseMetadata.description as string,
+      images: ['/opengraph/kelme-contact-og-banner.png'],
+      creator: '@kelmestudio'
+    }
+  };
 }
 
 export default async function ContactPage({

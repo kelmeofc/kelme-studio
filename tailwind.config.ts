@@ -15,6 +15,21 @@ const config: Config = {
 				xs: "480px",
 			},
 			colors: {
+				// Kelme Studio Custom Colors
+				emerald: {
+					DEFAULT: "var(--color-emerald)",
+					light: "var(--color-emerald-light)",
+					dark: "var(--color-emerald-dark)",
+				},
+				blue: "var(--color-blue)",
+				yellow: "var(--color-yellow)",
+				dark: {
+					DEFAULT: "var(--color-dark)",
+					card: "var(--color-dark-card)",
+				},
+				light: "var(--color-light)",
+				gray: "var(--color-gray)",
+				// Shadcn UI Default Colors
 				background: "hsl(var(--background))",
 				foreground: "hsl(var(--foreground))",
 				card: {
