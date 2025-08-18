@@ -6,7 +6,20 @@ body.mobile-menu-open .navbar-main {
   display: none;
 }
 
+
+
+/* ============= ROOT VARIABLES ============= */
 :root {
+  /* Core Brand Colors - Single source of truth */
+  --color-emerald: #27D182;
+  --color-emerald-light: #32E091;
+  --color-emerald-dark: #18A765;
+  --color-blue: #017DDD;
+  --color-yellow: #FAD007;
+  --color-dark: #0F0E0D;
+  --color-dark-card: #1A1918;
+  --color-light: #F7F7F7;
+  --color-gray: #D7D7D7;
   --radius: 0.65rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);

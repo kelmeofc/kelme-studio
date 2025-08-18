@@ -180,13 +180,16 @@ npm run build
 
 ### Adicionando Novas Seções/Componentes
 
-1. Crie o componente em `/components/`
-2. Adicione as strings de tradução em `messages/en.json` e `messages/pt.json`
+1. Verifique se o componente deve ser um Server ou Client Component
+2. Crie o componente em `/components/`
+3. Adicione as strings de tradução em `messages/en.json` e `messages/pt.json`
+4. Priorize o uso de estilos das variáveis definidas em `globals.css`
 3. Importe e use o componente nas páginas relevantes
 
 ### Modificando Estilos
 
-- Use classes Tailwind diretamente nos componentes
+- Priorize o uso de estilos das variáveis definidas em `globals.css` para accent, primary, secondary, background, text colors
+- Use classes Tailwind diretamente nos componentes quando não houver uma variável correspondente em `globals.css`
 - Para cores consistentes, use as variáveis definidas em globals.css
 - Esquema principal: Fundo escuro (#0F0E0D), texto claro (#F7F7F7), destaque verde (#27D182)
 - Gradient principal: Azul (#017DDD) → Verde (#27D182) → Amarelo (#FAD007) com stops em 0%, 52%, 100%
