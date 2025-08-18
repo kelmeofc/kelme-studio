@@ -6,7 +6,13 @@ body.mobile-menu-open .navbar-main {
   display: none;
 }
 
-
+/* Utilitário para gradiente em texto */
+.text-gradient-primary {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
 
 /* ============= ROOT VARIABLES ============= */
 :root {
@@ -20,6 +26,7 @@ body.mobile-menu-open .navbar-main {
   --color-dark-card: #1A1918;
   --color-light: #F7F7F7;
   --color-gray: #D7D7D7;
+  --gradient-primary: linear-gradient(to right, #017DDD, #27D182, #FAD007);
   --radius: 0.65rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.141 0.005 285.823);

@@ -90,7 +90,7 @@ export function Hero() {
 				>
 					{t("hero.title.line1")}
 					<br />
-					<span className="text-[#CB8D0F]">{t("hero.title.line2")}</span>
+					<span className="text-gradient-primary">{t("hero.title.line2")}</span>
 					<br />
 					<span className="text-[#F7F7F7]">{t("hero.title.line3")}</span>
 				</AnimatedFadeIn>

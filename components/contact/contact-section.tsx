@@ -34,7 +34,7 @@ export function ContactSection() {
             </span>
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6 tracking-tighter font-satoshi">
-            <span className="bg-gradient-to-r from-[#017DDD] via-[#27D182] to-[#FAD007] text-transparent bg-clip-text">
+            <span className="text-gradient-primary">
               {t("formTitle")}
             </span>
           </h1>

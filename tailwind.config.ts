@@ -86,6 +86,13 @@ const config: Config = {
 				md: "calc(var(--radius) - 2px)",
 				sm: "calc(var(--radius) - 4px)",
 			},
+			backgroundImage: {
+				'gradient-primary': 'var(--gradient-primary)',
+			},
+			// Adicionar utilitários para background-clip
+			backgroundClip: {
+				text: 'text',
+			},
 			keyframes: {
 				"accordion-down": {
 					from: {
