@@ -23,17 +23,17 @@ export const navbarStyles = {
   logoAccent: "font-light text-white",
   
   // Desktop navigation items
-  desktopNav: "hidden md:flex items-center space-x-8",
+  desktopNav: "hidden lg:flex items-center space-x-8",
   
   // Right side elements
   rightSide: "flex items-center space-x-4",
   
   // Mobile menu button
-  mobileMenuBtn: "md:hidden text-[#F7F7F7] hover:text-[#CB8D0F] transition-colors",
+  mobileMenuBtn: "lg:hidden text-[#F7F7F7] hover:text-[#27D182] transition-colors",
   mobileMenuIcon: "h-6 w-6",
   
   // Mobile menu overlay
-  mobileOverlay: "fixed inset-0 z-40 md:hidden",
+  mobileOverlay: "fixed inset-0 z-40 lg:hidden",
   mobileBackdrop: "fixed inset-0 bg-black bg-opacity-70",
   
   // Mobile menu content

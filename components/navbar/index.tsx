@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import { GradientButton } from "@/components/ui/gradient-button";
+import { Button } from "@/components/ui/button";
 import { LanguageSelector } from "@/components/language-selector";
 import { Link } from "@/i18n/navigation";
 import { NavItem, MegaDropdown } from "@/components/ui/mega-dropdown";
@@ -101,22 +101,20 @@ export function Navbar() {
 
 	// Define classes baseadas no estado de scroll
 	const containerClass = isScrolled
-		? "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#0F0E0D]/95 backdrop-blur-xl border-b border-[#27D182]/20"
+		? "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-[#0F0E0D]/80 backdrop-blur-md border-b border-[#27D182]/20"
 		: "fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent border-b border-transparent";
 
 	// Estilos embutidos
 	const styles = {
-		innerWrapper: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
-		flexContainer: "flex items-center justify-between h-20",
+		innerWrapper: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full",
+		flexContainer: "flex items-center justify-between h-20 w-full",
 		logoContainer: "flex items-center space-x-1",
 		logoImage: "h-8 w-8",
 		logoText:
 			"font-bold text-lg text-[#F7F7F7] font-satoshi uppercase tracking-wider",
 		logoAccent: "font-light text-[#27D182]",
-		desktopNav: "hidden md:flex items-center space-x-8",
-		rightSide: "flex items-center space-x-4",
 		mobileMenuBtn:
-			"md:hidden text-[#F7F7F7] hover:text-[#27D182] transition-colors",
+			"lg:hidden text-[#F7F7F7] hover:text-[#27D182] transition-colors ml-4",
 		mobileMenuIcon: "h-6 w-6",
 	};
 
@@ -125,64 +123,65 @@ export function Navbar() {
 			<nav className={`${containerClass} navbar-main`}>
 				<div className={styles.innerWrapper}>
 					<div className={styles.flexContainer}>
-						{/* Logo */}
-						<Link href="/" className={styles.logoContainer}>
-							<Image
-								src="/kelme-icon.svg"
-								alt="Eagle Icon"
-								width={32}
-								height={32}
-								className={styles.logoImage}
-								priority
-							/>
-							<div className={styles.logoText}>
-								KELME<span className={styles.logoAccent}>STUDIO</span>
-							</div>  
-						</Link>
-
-						{/* Desktop Menu */}
-						<div className={styles.desktopNav}>
-							{/* Services NavItem */}
-							<div onClick={(e) => handleItemClick(e, "services")}>
-								<NavItem
-									label={t("navbar.services").toUpperCase()}
-									isActive={activeDropdown === "services"}
-									sections={servicesSections}
+						{/* Divisão 1: Logo (1/3) */}
+						<div className="w-full lg:w-1/3 flex justify-start items-center">
+							<Link href="/" className={styles.logoContainer}>
+								<Image
+									src="/kelme-icon.svg"
+									alt="Eagle Icon"
+									width={32}
+									height={32}
+									className={styles.logoImage}
+									priority
 								/>
-							</div>
+								<div className={styles.logoText}>
+									KELME
+								</div>  
+							</Link>
+						</div>
 
-							{/* Work NavItem */}
-							<div onClick={(e) => handleItemClick(e, "work")}>
-								<NavItem
-									label={t("navbar.work").toUpperCase()}
-									isActive={activeDropdown === "work"}
-									sections={workSections}
+						{/* Divisão 2: Menu Central (1/3) */}
+						<div className="hidden lg:flex w-1/3 justify-center items-center">
+							<div className="flex items-center space-x-6 xl:space-x-8">
+								{/* Services NavItem */}
+								<div onClick={(e) => handleItemClick(e, "services")}>
+									<NavItem
+										label={t("navbar.services").toUpperCase()}
+										isActive={activeDropdown === "services"}
+										sections={servicesSections}
+									/>
+								</div>
+
+								{/* Work NavItem - Simple link like About */}
+								<NavItem 
+									label={t("navbar.work").toUpperCase()} 
+									href="/work" 
 								/>
-							</div>
 
-							{/* About NavItem */}
-							<NavItem label={t("navbar.about").toUpperCase()} href="#about" />
+								{/* About NavItem */}
+								<NavItem label={t("navbar.about").toUpperCase()} href="#about" />
 
-							{/* Insights NavItem */}
-							<div onClick={(e) => handleItemClick(e, "insights")}>
-								<NavItem
-									label={t("navbar.insights").toUpperCase()}
-									isActive={activeDropdown === "insights"}
-									sections={insightsSections}
-								/>
+								{/* Insights NavItem */}
+								<div onClick={(e) => handleItemClick(e, "insights")}>
+									<NavItem
+										label={t("navbar.insights").toUpperCase()}
+										isActive={activeDropdown === "insights"}
+										sections={insightsSections}
+									/>
+								</div>
 							</div>
 						</div>
 
-						{/* Right Side */}
-						<div className={styles.rightSide}>
-							<div className="hidden md:flex">
+						{/* Divisão 3: Botões e Controles (1/3) */}
+						<div className="w-full lg:w-1/3 flex justify-end items-center">
+							<div className="hidden lg:flex items-center space-x-4">
 								<LanguageSelector />
+								<Link href="/contact">
+									<Button size="default">
+										{t("navbar.letsTalk").toUpperCase()}
+									</Button>
+								</Link>
 							</div>
-							<Link href="/contact">
-								<GradientButton className="hidden md:block" size="sm">
-									{t("navbar.letsTalk").toUpperCase()}
-								</GradientButton>
-							</Link>
 							<button
 								onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
 								className={styles.mobileMenuBtn}
@@ -201,11 +200,7 @@ export function Navbar() {
 					onClose={() => setActiveDropdown(null)}
 				/>
 
-				<MegaDropdown
-					isOpen={activeDropdown === "work"}
-					sections={workSections}
-					onClose={() => setActiveDropdown(null)}
-				/>
+				{/* Work dropdown removed - it's now a simple link */}
 
 				<MegaDropdown
 					isOpen={activeDropdown === "insights"}

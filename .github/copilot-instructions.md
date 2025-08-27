@@ -310,6 +310,7 @@ npm run build
 ### Animações e Interações
 
 - **Princípios**: Suaves, elegantes, com propósito funcional
+- Utilize a biblioteca GSAP para animações
 - **Transições**: Curvas de easing naturais, duração média de 300-500ms
 - **Hover**: Efeitos sutis de escala (1.02-1.05) com destaque em verde (#27D182)
 - **Scroll**: Animações de fade e slide em elementos ao entrar na viewport

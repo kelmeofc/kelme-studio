@@ -3,7 +3,7 @@
     "services": "Services",
     "work": "Work",
     "about": "About",
-    "insights": "Insights",
+    "insights": "Content",
     "letsTalk": "Let's Talk",
     "menus": {
       "development": {
@@ -12,7 +12,7 @@
       },
       "marketing": {
         "title": "Marketing",
-        "items": ["Meta Ads", "Google Ads", "TikTok Ads", "Social Media", "Email Marketing", "SEO"]
+        "items": ["Paid Ads", "Social Media", "Email Marketing", "SEO"]
       },
       "strategy": {
         "title": "Strategy",
@@ -23,11 +23,24 @@
         "items": ["VSL", "Creative Ads"]
       },
       "work": ["Recent Projects", "Case Studies", "Success Stories"],
-      "insights": ["Latest Posts", "Marketing Tips", "Dev Insights", "Tools"]
+      "insights": ["Blog", "Tools"]
     }
   },
   "hero": {
-    "title": {"line1": "YOUR BRAND", "line2": "DESERVES TO", "line3": "FLY HIGH"},
+    "title": {
+      "line1": "YOUR BRAND DESERVES TO",
+      "line2": "FLY HIGH",
+      "rotating": {
+        "values": [
+          "FLY HIGH",
+          "BE AN AUTHORITY",
+          "HAVE IDENTITY",
+          "BE MEMORABLE",
+          "TRANSFORM IDEAS",
+          "CREATE CONNECTIONS"
+        ]
+      }
+    },
     "subtitle": "We elevate ambitious brands beyond the horizon, crafting digital experiences that soar above the competition.",
     "buttons": {"talkToDiego": "Talk to Diego", "viewWork": "View Work"}
   },
@@ -73,12 +86,10 @@
     "sectionSubtitle": "The foundation of our portfolio demonstrates who we truly are. We invest into exceptional people and follow the long-term vision.",
     "viewButton": "View all works",
     "items": [
-      {"id": 1, "title": "Yacht renting and water adventures service", "category": "MICRO-SAAS", "description": "Complete financial platform with AI-powered insights and automated trading capabilities.", "image": "/placeholder-opudz.png", "year": "2024", "clientName": "AcePlaza", "tags": ["Mobile App", "UI/UX", "iOS"]},
-      {"id": 2, "title": "Full-suite studio fitness management platform", "category": "SHOPIFY", "description": "Premium fashion brand with immersive shopping experience and AR try-on features.", "image": "/luxury-fashion-ecommerce.png", "year": "2024", "clientName": "ClubReady", "tags": ["SaaS", "Web App"]},
-      {"id": 3, "title": "Personalised healthy meal subscription app", "category": "LANDING PAGE", "description": "High-converting landing page that increased conversions by 340% in 30 days.", "image": "/modern-startup-hero.png", "year": "2023", "clientName": "CountFit", "tags": ["Mobile App", "Fitness"]},
-      {"id": 4, "title": "NFT label and marketplace", "category": "BRANDING", "description": "Complete brand overhaul for emerging tech company, from logo to digital presence.", "image": "/placeholder-c7jvm.png", "year": "2023", "clientName": "Getshid", "tags": ["Blockchain", "Marketplace"]},
-      {"id": 5, "title": "SaaS Data Management Web App", "category": "MARKETING", "description": "Social media campaign that reached 2M+ users and generated 150% ROI.", "image": "/placeholder-zbxuv.png", "year": "2024", "clientName": "Ravel", "tags": ["SaaS", "B2B", "CRM"]},
-      {"id": 6, "title": "Personalized laundry service", "category": "DEVELOPMENT", "description": "Custom CRM system handling 10K+ daily transactions with real-time analytics.", "image": "/enterprise-crm-dashboard.png", "year": "2023", "clientName": "Doobi", "tags": ["Service Design", "Consumer App"]}
+      {"id": 1, "title": "Steez Drink", "category": "E-COMMERCE", "description": "Minimalist website for a low-carb beverage brand with age verification and integrated payment system.", "image": "/placeholder-opudz.png", "year": "2024", "clientName": "Steez", "tags": ["Vercel", "Next.js", "E-commerce"]},
+      {"id": 2, "title": "ImpulsioneGram", "category": "MARKETING", "description": "Complete platform for Instagram influence marketing, with payment system and metrics dashboard.", "image": "/luxury-fashion-ecommerce.png", "year": "2024", "clientName": "ImpulsioneGram", "tags": ["Digital Marketing", "Web App"]},
+      {"id": 3, "title": "3Pi - Trademark Registration", "category": "BRANDING", "description": "Institutional website for a company specialized in trademark registration and protection, with online consultation system.", "image": "/modern-startup-hero.png", "year": "2023", "clientName": "PPPI", "tags": ["WordPress", "Branding"]},
+      {"id": 4, "title": "Flikta", "category": "SAAS", "description": "Platform for managing campaigns with influencers, with AI optimization and real-time ROI metrics.", "image": "/placeholder-c7jvm.png", "year": "2024", "clientName": "Flikta", "tags": ["SaaS", "Next.js", "AI"]}
     ]
   },
   "founder": {

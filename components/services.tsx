@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { Code, Megaphone, Palette, Video, ArrowRight, ChevronRight } from "lucide-react"
+import { Code, Megaphone, Palette, Video, ArrowUpRight, ChevronRight } from "lucide-react"
 import { useMessages, useTranslations } from 'next-intl'
 
 // Mapeia ícones por possíveis categorias (EN/PT)
@@ -96,7 +96,7 @@ export function Services() {
             className="bg-[#CB8D0F] text-[#0F0E0D] font-medium py-3 px-8 rounded-full transition-all duration-300 hover:bg-[#CB8D0F]/90 hover:shadow-lg flex items-center gap-2"
           >
             {messages.navbar.letsTalk}
-            <ArrowRight className="w-4 h-4" />
+            <ArrowUpRight className="w-4 h-4" />
           </a>
         </div>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { GradientButton } from "@/components/ui/gradient-button";
+import { Button } from "@/components/ui";
 import ReactCountryFlag from "react-country-flag";
 import { ChevronDown } from "lucide-react";
 import { useLocale } from 'next-intl';
@@ -25,11 +25,11 @@ export function LanguageSelector() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <GradientButton variant="secondary" size="sm" className="flex items-center gap-2 min-w-[120px] px-4 py-2">
+        <Button variant="secondary" size="sm" className="flex items-center gap-2 min-w-[120px]">
           <ReactCountryFlag countryCode={current.country} svg style={{ width: 20, height: 20, borderRadius: '50%', objectFit: 'cover' }} />
           <span className="font-bold text-base text-[#F7F7F7]">{current.code.toUpperCase()}</span>
-          <ChevronDown className="h-4 w-4 text-[#CB8D0F]" />
-        </GradientButton>
+          <ChevronDown className="h-4 w-4 text-[#27D182]" />
+        </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-[140px] p-1">
         {languages.map(lang => {

@@ -1,16 +1,30 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { useMessages } from 'next-intl'
-import { ExternalLink, ArrowRight } from "lucide-react"
+import { ExternalLink, ArrowUpRight } from "lucide-react"
 import Image from "next/image"
-import { GradientButton } from "@/components/ui/gradient-button"
+import { Button } from "@/components/ui"
+import { gsap } from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+
+// Registrar plugins do GSAP
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger)
+}
 
 export function Work() {
   const messages: any = useMessages()
   const portfolioItems: any[] = messages.work.items
   const [hoveredItem, setHoveredItem] = useState<number | null>(null)
   const [activeFilter, setActiveFilter] = useState<string>("all")
+  
+  const sectionRef = useRef<HTMLElement>(null)
+  const titleRef = useRef<HTMLHeadingElement>(null)
+  const subtitleRef = useRef<HTMLParagraphElement>(null)
+  const filtersRef = useRef<HTMLDivElement>(null)
+  const projectsRef = useRef<HTMLDivElement>(null)
+  const buttonRef = useRef<HTMLDivElement>(null)
 
   // Extract unique categories from portfolio items
   const categories = ["all", ...new Set(portfolioItems.map(item => item.category.toLowerCase()))]
@@ -25,19 +39,125 @@ export function Work() {
   const getTagInfo = (category: string) => {
     return { bg: "bg-[#27D182]/20", text: "text-[#27D182]" }
   }
+  
+  // Configurar animações GSAP quando o componente montar
+  useEffect(() => {
+    // Título e subtítulo com fade in para cima
+    gsap.fromTo(
+      [titleRef.current, subtitleRef.current],
+      { 
+        opacity: 0, 
+        y: 30 
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 80%",
+        }
+      }
+    );
+    
+    // Filtros com stagger
+    if (filtersRef.current) {
+      gsap.fromTo(
+        Array.from(filtersRef.current.children),
+        { 
+          opacity: 0, 
+          y: 20 
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          ease: "power2.out",
+          stagger: 0.1,
+          scrollTrigger: {
+            trigger: filtersRef.current,
+            start: "top 80%",
+          }
+        }
+      );
+    }
+    
+    // Projetos com stagger
+    if (projectsRef.current) {
+      gsap.fromTo(
+        Array.from(projectsRef.current.children),
+        { 
+          opacity: 0, 
+          y: 50 
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: projectsRef.current,
+            start: "top 80%",
+          }
+        }
+      );
+    }
+    
+    // Botão com fade in
+    gsap.fromTo(
+      buttonRef.current,
+      { 
+        opacity: 0, 
+        y: 20 
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: buttonRef.current,
+          start: "top 90%",
+        }
+      }
+    );
+  }, []);
+
+  // Quando o filtro muda, animamos os novos itens
+  useEffect(() => {
+    if (projectsRef.current) {
+      // Primeiro ocultamos todos os elementos
+      gsap.set(Array.from(projectsRef.current.children), { 
+        opacity: 0,
+        y: 30 
+      });
+      
+      // Em seguida, animamos para que apareçam
+      gsap.to(Array.from(projectsRef.current.children), {
+        opacity: 1,
+        y: 0,
+        duration: 0.5,
+        stagger: 0.1,
+        ease: "power2.out"
+      });
+    }
+  }, [activeFilter]);
 
   return (
-    <section className="py-32 px-6 lg:px-12 bg-[#0F0E0D]">
+    <section ref={sectionRef} className="py-32 px-6 lg:px-12 bg-[#0F0E0D]">
       <div className="max-w-7xl mx-auto">
         <div className="mb-12">
-          <h2 className="text-4xl lg:text-5xl text-[#F7F7F7] mb-6">
+          <h2 ref={titleRef} className="text-4xl lg:text-5xl text-[#F7F7F7] mb-6">
             {messages.work.sectionTitle}
           </h2>
-          <p className="text-lg text-[#F7F7F7]/60 max-w-2xl font-satoshi">{messages.work.sectionSubtitle}</p>
+          <p ref={subtitleRef} className="text-lg text-[#F7F7F7]/60 max-w-2xl font-satoshi">{messages.work.sectionSubtitle}</p>
         </div>
 
         {/* Filter categories */}
-        <div className="mb-12 flex flex-wrap gap-4">
+        <div ref={filtersRef} className="mb-12 flex flex-wrap gap-4">
           {categories.map((category) => (
             <button
               key={category}
@@ -55,7 +175,7 @@ export function Work() {
         </div>
 
         {/* Projects grid */}
-        <div className="grid md:grid-cols-2 gap-6">
+        <div ref={projectsRef} className="grid md:grid-cols-2 gap-6">
           {filteredItems.map((item) => (
             <div
               key={item.id}
@@ -116,18 +236,18 @@ export function Work() {
                 }`}
               >
                 <div className="w-10 h-10 bg-[#27D182] rounded-full flex items-center justify-center">
-                  <ArrowRight className="w-5 h-5 text-[#0F0E0D]" />
+                  <ArrowUpRight className="w-5 h-5 text-[#0F0E0D]" />
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-16">
-          <GradientButton className="inline-flex items-center gap-2 px-6 py-3 transition-colors">
+        <div ref={buttonRef} className="text-center mt-16">
+          <Button className="inline-flex items-center gap-2">
             {messages.work.viewButton}
-            <ArrowRight className="w-4 h-4" />
-          </GradientButton>
+            <ArrowUpRight className="w-4 h-4" />
+          </Button>
         </div>
       </div>
     </section>
