@@ -9,6 +9,7 @@ import { NavItem, MegaDropdown } from "@/components/ui/mega-dropdown";
 import { useTranslations, useMessages } from "next-intl";
 import { getServiceIcon, getCategoryDefaultIcon } from "./icon-mapper";
 import { MobileMenu } from "./mobile-menu";
+import { useNavMenus } from "./use-nav-menus";
 import Image from "next/image";
 
 /**
@@ -21,57 +22,17 @@ export function Navbar() {
 	const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 	const [isScrolled, setIsScrolled] = useState(false);
 
-	// Get translations and menu data
+	// Get translations
 	const t = useTranslations();
 	const messages: any = useMessages();
-	const menus = messages.navbar.menus;
 
-	// Process menu data
-	const servicesSections = [
-		{
-			title: menus.development.title,
-			items: menus.development.items.map((item: string) => ({
-				label: item,
-				icon: getServiceIcon(item, getCategoryDefaultIcon("development")),
-			})),
-		},
-		{
-			title: menus.marketing.title,
-			items: menus.marketing.items.map((item: string) => ({
-				label: item,
-				icon: getServiceIcon(item, getCategoryDefaultIcon("marketing")),
-			})),
-		},
-		{
-			title: menus.strategy.title,
-			items: menus.strategy.items.map((item: string) => ({
-				label: item,
-				icon: getServiceIcon(item, getCategoryDefaultIcon("strategy")),
-			})),
-		},
-		{
-			title: menus.video.title,
-			items: menus.video.items.map((item: string) => ({
-				label: item,
-				icon: getServiceIcon(item, getCategoryDefaultIcon("video")),
-			})),
-		},
-	];
-
-	// Process section data
-	const workSections = [
-		{
-			title: "",
-			items: menus.work.map((item: string) => ({ label: item })),
-		},
-	];
-
-	const insightsSections = [
-		{
-			title: "",
-			items: menus.insights.map((item: string) => ({ label: item })),
-		},
-	];
+	// Importando o hook que prepara os menus com ícones
+	const {
+		servicesSections,
+		workSections,
+		insightsSections,
+		socialSections
+	} = useNavMenus();
 
 	// Handle scroll effect
 	useEffect(() => {
@@ -204,7 +165,7 @@ export function Navbar() {
 
 				<MegaDropdown
 					isOpen={activeDropdown === "insights"}
-					sections={insightsSections}
+					sections={[...insightsSections, ...socialSections]}
 					onClose={() => setActiveDropdown(null)}
 				/>
 			</nav>
@@ -214,8 +175,9 @@ export function Navbar() {
 				isOpen={mobileMenuOpen}
 				onClose={() => setMobileMenuOpen(false)}
 				servicesSections={servicesSections}
-				workItems={menus.work}
-				insightsItems={menus.insights}
+				workItems={messages.navbar.menus.work}
+				insightsItems={messages.navbar.menus.insights}
+				socialItems={messages.footer.socialLinks}
 				aboutLabel={t("navbar.about").toUpperCase()}
 				letsTalkLabel={t("navbar.letsTalk").toUpperCase()}
 				servicesLabel={t("navbar.services")}

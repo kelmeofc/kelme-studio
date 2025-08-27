@@ -77,10 +77,29 @@ export const useNavMenus = () => {
     }
   ];
 
+  // Social media section with icons
+  const socialSections = [
+    {
+      title: messages.footer.socialTitle,
+      items: messages.footer.socialLinks.map((name: string) => {
+        // Substituir "Twitter" por "X" para exibição mantendo compatibilidade com as traduções
+        const displayName = name === "Twitter" ? "X" : name;
+        const iconKey = name === "Twitter" ? "X" : name;
+        
+        return {
+          label: displayName,
+          icon: `https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${iconKey.toLowerCase()}.svg`,
+          href: `https://${iconKey.toLowerCase()}.com/kelmeofc`
+        };
+      })
+    }
+  ];
+
   return {
     servicesSections,
     workSections,
     insightsSections,
+    socialSections,
     menus,
     t
   };

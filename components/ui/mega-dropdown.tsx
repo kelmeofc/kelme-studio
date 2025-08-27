@@ -21,7 +21,12 @@ const MenuItem: React.FC<MenuItemProps> = ({ icon, label, href = "#", className 
         {icon && (
           <div className="w-6 h-6 flex items-center justify-center text-[#27D182]">
             {typeof icon === 'string' ? (
-              <img src={icon} alt="" className="w-5 h-5 object-contain" />
+              <img 
+                src={icon} 
+                alt="" 
+                className="w-5 h-5 object-contain" 
+                style={{ filter: "invert(44%) sepia(99%) saturate(505%) hue-rotate(116deg) brightness(95%) contrast(87%)" }} 
+              />
             ) : (
               icon
             )}
@@ -113,7 +118,7 @@ export const NavItem: React.FC<NavItemProps> = ({ label, sections, href, onClick
       >
         <button 
           className={`flex items-center space-x-1 py-2 font-satoshi uppercase text-sm font-medium
-            ${isActive ? "text-[#CB8D0F]" : "text-[#F7F7F7] hover:text-[#CB8D0F]"} 
+            ${isActive ? "text-[#27D182]" : "text-[#F7F7F7] hover:text-[#27D182]"} 
             transition-colors duration-300`}
           onClick={() => {
             setIsHovered(!isHovered)
@@ -144,7 +149,7 @@ export const NavItem: React.FC<NavItemProps> = ({ label, sections, href, onClick
     <a 
       href={href || "#"} 
       className={`py-2 font-satoshi uppercase text-sm font-medium
-        ${isActive ? "text-[#CB8D0F]" : "text-[#F7F7F7] hover:text-[#CB8D0F]"} 
+        ${isActive ? "text-[#27D182]" : "text-[#F7F7F7] hover:text-[#27D182]"} 
         transition-colors duration-300`}
     >
       {label}

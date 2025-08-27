@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { LanguageSelector } from "./language-selector"
-import { Button } from "@/components/ui"
+import { GradientButton } from "@/components/ui/gradient-button"
 import { useMessages } from 'next-intl'
 import { Link } from '@/i18n/navigation'
 
@@ -57,7 +57,7 @@ export function Footer() {
             {f.cta.title.part2}
           </h2>
           <p className="text-xl text-[#F7F7F7]/60 mb-12 max-w-2xl mx-auto">{f.cta.subtitle}</p>
-          <Button className="tracking-wider hover:scale-105">{f.cta.button.toUpperCase()}</Button>
+          <GradientButton className="px-12 py-4 tracking-wider hover:scale-105">{f.cta.button.toUpperCase()}</GradientButton>
         </div>
       </div>
 

@@ -13,6 +13,7 @@ interface MobileMenuProps {
   servicesSections: MenuSection[];
   workItems: string[];
   insightsItems: string[];
+  socialItems?: string[];
   aboutLabel: string;
   letsTalkLabel: string;
   servicesLabel: string;
@@ -26,6 +27,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
   servicesSections,
   workItems,
   insightsItems,
+  socialItems = [],
   aboutLabel,
   letsTalkLabel,
   servicesLabel,
@@ -37,14 +39,16 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
     services: boolean;
     work: boolean;
     insights: boolean;
+    social: boolean;
   }>({
     services: false,
     work: false,
-    insights: false
+    insights: false,
+    social: false
   });
 
   // Toggle para abrir/fechar seções do accordion
-  const toggleSection = (section: 'services' | 'work' | 'insights') => {
+  const toggleSection = (section: 'services' | 'work' | 'insights' | 'social') => {
     setOpenSections(prev => ({
       ...prev,
       [section]: !prev[section]
@@ -83,15 +87,18 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
       >
         {/* Cabeçalho com logo e botão de fechar */}
         <div className="flex justify-between items-center p-4 border-b border-[#27D182]/20">
-          <div className="flex items-center space-x-2">
-            <Image 
-              src="/kelme-logo.svg" 
-              alt="Kelme Studio" 
-              width={32} 
-              height={32} 
-              className="h-8 w-auto" 
-              priority
-            />
+          <div className="flex items-bottom space-x-0">
+              <Link href="/" className={styles.logoContainer}>
+                            <Image
+                              src="/kelme-icon.svg"
+                              alt="Eagle Icon"
+                              width={32}
+                              height={32}
+                              className={styles.logoImage}
+                              priority
+                            />
+                           
+                          </Link>
           </div>
           <div className="flex items-center space-x-4">
             <LanguageSelector />
@@ -194,22 +201,58 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({
               
               {openSections.insights && (
                 <div id="insights-content" className="mt-2 grid grid-cols-2 gap-x-4">
-                  <div className="border-l-2 border-[#CB8D0F]/30 pl-3 py-1">
+                  <div className="border-l-2 border-[#27D182]/30 pl-3 py-1">
                     <ul className="space-y-3">
                       {insightsItems.map((item: string, i: number) => (
                         <li key={i}>
                           <a 
                             href="#" 
-                            className="flex items-center space-x-2 text-[#F7F7F7]/80 hover:text-[#CB8D0F] text-sm py-1"
+                            className="flex items-center space-x-2 text-[#F7F7F7]/80 hover:text-[#27D182] text-sm py-1"
                             onClick={onClose}
                           >
-                            <span className="text-[#CB8D0F] w-5 h-5 flex items-center justify-center">
+                            <span className="text-[#27D182] w-5 h-5 flex items-center justify-center">
                               <BookOpen className="h-4 w-4" />
                             </span>
                             <span>{item}</span>
                           </a>
                         </li>
                       ))}
+                    </ul>
+                  </div>
+                  
+                  {/* Social Media Links */}
+                  <div className="border-l-2 border-[#27D182]/30 pl-3 py-1">
+                    <h4 className="text-[#27D182] text-sm font-medium uppercase mb-2">
+                      Social
+                    </h4>
+                    <ul className="space-y-3">
+                      {socialItems.map((item: string, i: number) => {
+                        // Substituir "Twitter" por "X" para exibição
+                        const displayName = item === "Twitter" ? "X" : item;
+                        const iconName = item === "Twitter" ? "x" : item.toLowerCase();
+                        
+                        return (
+                          <li key={i}>
+                            <a 
+                              href={`https://${iconName}.com/kelmeofc`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="flex items-center space-x-2 text-[#F7F7F7]/80 hover:text-[#27D182] text-sm py-1"
+                              onClick={onClose}
+                            >
+                              <span className="text-[#27D182] w-5 h-5 flex items-center justify-center">
+                                <img 
+                                  src={`https://cdn.jsdelivr.net/npm/simple-icons@v11/icons/${iconName}.svg`}
+                                  alt={displayName}
+                                  className="h-4 w-4"
+                                  style={{ filter: "invert(44%) sepia(99%) saturate(505%) hue-rotate(116deg) brightness(95%) contrast(87%)" }}
+                                />
+                              </span>
+                              <span>{displayName}</span>
+                            </a>
+                          </li>
+                        );
+                      })}
                     </ul>
                   </div>
                 </div>
